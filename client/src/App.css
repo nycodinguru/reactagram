@@ -1,0 +1,77 @@
+/**************************************************
+I personally like to have this kind of comment on 
+css for each page. So we can find the one easily since
+all of us will be doing it together. 
+**************************************************/
+
+
+/**************************************************/
+/****************** FOR ALL PAGE ******************/
+/**************************************************/
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#reactagram-logo {
+  background-image: url('./images/reactagram.png');
+  background-size: cover;
+  height: 300px;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: scale(.5,.5);
+  position: relative;
+  top: -110px;
+}
+
+#profile-photo {
+  background-image: url('./images/yerim.png');
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  position: relative;
+  top: 8px;
+  margin: 0 0 0 7px;
+}
+
+/* Nav Bar */
+
+nav {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 20px 60px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+  margin: 30px 10px 10px 10px;
+  font-size: 20px;
+}
+
+/**************************************************/
+/****************** LANDING PAGE ******************/
+/**************************************************/
+
+
+.post-div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.post-photos {
+  width: 300px;
+  height: 300px;
+}
+
+
