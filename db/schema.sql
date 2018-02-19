@@ -28,6 +28,8 @@ CREATE TABLE user_likes (
   is_liked BOOLEAN
 );
 
+DROP TABLE IF EXISTS comments CASCADE;
+
 CREATE TABLE comments (
   id BIGSERIAL PRIMARY KEY,
   comment_text VARCHAR(1280),
@@ -57,3 +59,10 @@ INSERT INTO user_likes (userid, postid, is_liked) VALUES
 (2, 1, false),
 (1, 2, true),
 (2, 2, true);
+
+INSERT INTO comments (comment_text, u_id, p_id) 
+VALUES 
+('I am a comment', 1, 1),
+('I am a 2nd comment', 1, 2),
+('I am a 3rd comment', 2, 3),
+('I am a 4th comment', 2, 4);

@@ -1,13 +1,12 @@
 // Reactagram model
 
-const db = require("../db/setup.js");
+const db = require('../db/setup.js');
 const Reactagram = {};
 
-
 Reactagram.user = (req, res, next) => {
-  const { id } = req.params
+  const { id } = req.params;
   db
-    .oneOrNone("SELECT * FROM users WHERE users.id = $1", [id])
+    .oneOrNone('SELECT * FROM users WHERE users.id = $1', [id])
     .then(user => {
       res.locals.user = user;
       next();
@@ -17,7 +16,7 @@ Reactagram.user = (req, res, next) => {
 
 Reactagram.allPosts = (req, res, next) => {
   db
-    .manyOrNone("SELECT * FROM posts")
+    .manyOrNone('SELECT * FROM posts')
     .then(posts => {
       res.locals.data = posts;
       next();
@@ -25,5 +24,14 @@ Reactagram.allPosts = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+Reactagram.allComments = (req, res, next) => {
+  db
+    .manyOrNone('SELECT * FROM comments')
+    .then(comments => {
+      res.locals.comments = comments;
+      next();
+    })
+    .catch(err => console.log(err));
+};
 
 module.exports = Reactagram;
