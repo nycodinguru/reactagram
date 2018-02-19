@@ -7,6 +7,7 @@ import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Profile from './components/Profile';
+import SinglePost from './components/SinglePost';
 
 class App extends Component {
 
@@ -105,6 +106,30 @@ class App extends Component {
                 )
               }}
             />
+
+            <Route
+              path='/reactagram/posts/:id'
+              render={props => {
+                return(
+                  <div>
+                  <nav>
+                      <a href="/profile" id="profile-photo"></a> 
+                      <div id="reactagram-logo"></div>
+                      <ul>
+                        <li>
+                          <a href="/createpost">Create</a>
+                        </li>
+                        <li>
+                          <a href="/">Log Out</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  <SinglePost {...props} postsData={this.state.postsData}/>
+                  </div>
+                  )
+              }}
+
+              />
 
             <Route
               exact path='/profile'

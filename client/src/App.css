@@ -8,14 +8,16 @@ all of us will be doing it together.
 /**************************************************/
 /****************** FOR ALL PAGE ******************/
 /**************************************************/
-
+* {
+  font-family: 'Roboto Condensed', sans-serif;
+}
 body {
   margin: 0;
   padding: 0;
 }
 
 #reactagram-logo {
-  background-image: url('./images/reactagram.png');
+  background-image: url('https://i.imgur.com/ibE1DjA.png');
   background-size: cover;
   height: 300px;
   width: 700px;
@@ -23,7 +25,8 @@ body {
   margin-right: auto;
   transform: scale(.5,.5);
   position: relative;
-  top: -110px;
+  left: 58px;
+  top: -105px;
 }
 
 #profile-photo {
@@ -43,7 +46,10 @@ nav {
   display: flex;
   justify-content: center;
   justify-content: space-between;
-  margin: 20px 60px;
+  height: 73px;
+  box-shadow: 0 0 14px 1px rgba(0, 0, 0, .3);
+  margin: 0;
+  padding: 0px 30px 0px 0px;
 }
 
 ul {
@@ -57,6 +63,19 @@ li {
   display: inline-block;
   margin: 30px 10px 10px 10px;
   font-size: 20px;
+}
+
+/* Loading Div Animation */
+
+.loading-div{
+  background-image: url('https://i.imgur.com/Tt1abjh.gif');
+  background-size: cover;
+  height: 350px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  background-position: center;
+  margin-top: 24vh;
 }
 
 /**************************************************/
@@ -74,4 +93,53 @@ li {
   height: 300px;
 }
 
+/**************************************************/
+/****************** SINGLE POST PAGE **************/
+/**************************************************/
 
+.single-post-image-div{
+  width: 100%;
+  height: 500px;
+}
+.single-post-container-div{
+  height: 800px;
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
+  margin-top: 30px;
+}
+.likes-and-comments{
+  position: relative;
+  display: inline-block;
+  height: 53px;
+  width: 200px;
+  margin: 14px;
+}
+.likes-div{
+  background-image: url('https://i.imgur.com/lkJnRud.png');
+  background-size: cover;
+  background-position: center;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  padding-left: 2px;
+}
+.likes-div p{
+  font-size: 20pt;
+  margin: 0 0 0 50px;
+}
+.comments-div{
+  background-image: url('https://i.imgur.com/ksEPmRn.png');
+  background-size: cover;
+  background-position: center;
+  height: 32px;
+  width: 32px;
+  margin: -6px;
+  display: inline-block;
+  margin-left: 69px;
+}
+.caption-text{
+  font-size: 26pt;
+  margin: 16px 0px 0px 10px;
+}
