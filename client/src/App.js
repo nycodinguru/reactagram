@@ -48,7 +48,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.queryPosts(), this.grabUserObj();
+    this.queryPosts(), 
+    this.grabUserObj();
   }
 
   render() {
@@ -94,20 +95,14 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <nav>
-                      <a href="/profile" id="profile-photo" />
-                      <div id="reactagram-logo" />
-                      <ul>
-                        <li>
-                          <a href="/createpost">Create</a>
-                        </li>
-                        <li>
-                          <a href="/">Log Out</a>
-                        </li>
-                      </ul>
+
+                    <nav> 
+                      <a href="/profile" id="profile-photo"> </a>
+                      <div id="reactagram-logo"></div>
+                      <a href="/profile" id="profile-photo"> </a>
                     </nav>
 
-                    <LandingPage />
+                    <LandingPage {...props} posts={this.state.postsData}/>
                   </div>
                 );
               }}
