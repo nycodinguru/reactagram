@@ -16,7 +16,6 @@ export default class SinglePost extends Component{
         return i.id === this.props.match.params.id
       })
 
-      console.log(posterProfile.user_id)
      axios({
       url: `http://localhost:3000/api/reactagram/users/${posterProfile.user_id}`,
       method: "get"
@@ -54,6 +53,7 @@ export default class SinglePost extends Component{
           <p className="caption-text">{photo.caption}</p>
         </div>
         </div>
+        <div className="new-post"></div>
 
 
       </div>
