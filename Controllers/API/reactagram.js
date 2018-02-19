@@ -18,4 +18,9 @@ router.get('/comments', Reactagram.allComments, (req, res) => {
   res.json(commentObj);
 });
 
+router.post('/comments', Reactagram.createComment, (req, res) => {
+  const commentObj = res.locals.newcomment;
+  res.json(commentObj);
+});
+
 module.exports = router;
