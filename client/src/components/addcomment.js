@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class AddComment extends Component {
   constructor(props) {
     super(props);
-    this.state({});
+    this.state = { comments: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }

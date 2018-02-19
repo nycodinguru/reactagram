@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AddComment from 'addcomment.js';
 
 export default class LandingPage extends Component {
 	render() {
