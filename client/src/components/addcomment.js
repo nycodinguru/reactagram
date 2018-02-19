@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 export default class AddComment extends Component {
   constructor(props) {
     super(props);
-    this.state = { comments: '' };
+    this.state = { comment: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    console.log('change handled');
+    this.setState({ comment: event.target.value });
+    console.log('STATE OF COMMENT is ===>', this.state.comment);
   }
   handleSubmit(evnt) {
     console.log('submit handles');

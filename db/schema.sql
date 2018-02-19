@@ -60,11 +60,6 @@ INSERT INTO user_likes (userid, postid, is_liked) VALUES
 (1, 2, true),
 (2, 2, true);
 
--- id BIGSERIAL PRIMARY KEY,
---   comment_text VARCHAR(1280),
---   u_id INTEGER,
---   p_id INTEGER,
---   time_stamp VARCHAR(255)
 INSERT INTO comments (comment_text, u_id, p_id) 
 VALUES 
 ('I am a comment', 1, 1),
