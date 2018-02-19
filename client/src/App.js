@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  Redirect
 } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
@@ -14,7 +14,7 @@ import Signup from './components/Signup';
 import Profile from './components/Profile';
 import SinglePost from './components/SinglePost';
 import AddComment from './components/addcomment';
-
+import ShowComments from './components/ShowComments';
 
 class App extends Component {
   constructor(props) {
@@ -23,14 +23,14 @@ class App extends Component {
     this.state = {
       id: 1,
       userData: {},
-      postsData: '',
+      postsData: ''
     };
   }
 
   grabUserObj() {
     axios({
       url: `http://localhost:3000/api/reactagram/users/${this.state.id}`,
-      method: 'get',
+      method: 'get'
     }).then(response => {
       console.log(response.data);
       this.setState({ userData: response.data });
@@ -40,7 +40,7 @@ class App extends Component {
   queryPosts() {
     axios({
       url: 'http://localhost:3000/api/reactagram/posts',
-      method: 'get',
+      method: 'get'
     }).then(response => {
       console.log(response.data);
       this.setState({ postsData: response.data });
@@ -122,13 +122,13 @@ class App extends Component {
             />
 
             <Route
-              path='/reactagram/posts/:id'
+              path="/reactagram/posts/:id"
               render={props => {
-                return(
+                return (
                   <div>
-                  <nav>
-                      <a href="/profile" id="profile-photo"></a> 
-                      <div id="reactagram-logo"></div>
+                    <nav>
+                      <a href="/profile" id="profile-photo" />
+                      <div id="reactagram-logo" />
                       <ul>
                         <li>
                           <a href="/createpost">Create</a>
@@ -138,22 +138,27 @@ class App extends Component {
                         </li>
                       </ul>
                     </nav>
-                  <SinglePost {...props} postsData={this.state.postsData}/>
+                    <SinglePost {...props} postsData={this.state.postsData} />
                   </div>
-                  )
+                );
               }}
-
-              />
+            />
 
             <Route
               exact
               path="/commmentform"
-
               render={props => {
                 return <AddComment />;
               }}
             />
-      
+
+            <Route
+              exact
+              path="/ShowComments"
+              render={props => {
+                return <ShowComments />;
+              }}
+            />
           </Switch>
         </Router>
       </div>
