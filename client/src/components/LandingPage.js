@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
+import AddComment from 'addcomment.js';
 
 export default class LandingPage extends Component {
-	render(){
+	render() {
 		// const photos = this.props.photos.map(el => {
 		// 	return(
 		// 		<img src={el.url} className="post-photos" key={el.id}/>
-			//)
+		//)
 		//})
 
-		return(
+		return (
 			<div>
 				{/* NEED PROFILE PHOTO AND PROFILE NAME HERE */}
-				<div className="post-div"> 
-					hi
-				</div>
+				<div className="post-div">hi</div>
 			</div>
-		)
+		);
 	}
 }
