@@ -23,9 +23,9 @@ class App extends Component {
 
     this.state = {
       id: 1,
-      allUserData: 'notloaded',
-      userData: {},
-      postsData: ''
+      allUserData: "notloaded",
+      userData: "notloaded",
+      postsData: '',
     };
   }
 
@@ -108,12 +108,17 @@ class App extends Component {
               render={props => {
                 return (
                   <div id="landingPage">
+<<<<<<< HEAD
                     <NavBar />
                     <LandingPage
                       {...props}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                     />
+=======
+                    <NavBar user={this.state.userData}/>
+                    <LandingPage {...props} posts={this.state.postsData} users={this.state.allUserData}/>
+>>>>>>> 5f4d5e94245dfe22e104f827fb4341b1329a2a3f
                   </div>
                 );
               }}
@@ -122,13 +127,17 @@ class App extends Component {
             {/************************* PROFILE PAGE ************************/}
             {/***************************************************************/}
             <Route
+<<<<<<< HEAD
               exact
               path="/profile"
+=======
+              exact path="/users/:id"
+>>>>>>> 5f4d5e94245dfe22e104f827fb4341b1329a2a3f
               render={props => {
                 return (
                   <div>
-                    <NavBar />
-                    <Profile />
+                    <NavBar user={this.state.userData}/>
+                    <Profile {...props} user={this.state.userData}/>
                   </div>
                 );
               }}
