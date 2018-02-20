@@ -17,6 +17,10 @@ body {
   padding: 0;
 }
 
+section {
+  margin-top: 100px;
+}
+
 .clearfix::after {
     content: "";
     clear: both;
@@ -58,7 +62,8 @@ nav {
   display: flex;
   justify-content: space-around;
   width: 100vw;
-  padding: 5px 30px 0px 0px;
+  padding: 1000px 30px 0px 0px;
+  margin-top: -995px;
   background: rgba(255, 255, 255, .87);
   box-shadow: 0 0 7px 1px rgba(0, 0, 0, .3);
   z-index: 1000;
@@ -85,12 +90,11 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 100px;
 }
 
 .post-div {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, .19);
-  height: 450px;
+  height: 420px;
   width: 300px;
   margin: 30px;
   display: inline-block;
@@ -106,17 +110,22 @@ nav {
   height: 300px;
 }
 
+.post-photos:hover {
+  cursor: pointer;
+}
+
 .post-caption {
-  font-size: 20px;
-  text-indent: 10px;
+  margin: 0;
+  font-size: 16px;
+  text-indent: 6px;
   letter-spacing: 1px;
 }
 
-.user_profile {
+.user-profile {
   height: 47px;
 }
 
-.profile_picture {
+.profile-picture {
   float: left;
   height: 40px;
   width: 40px;
@@ -124,10 +133,42 @@ nav {
   margin: 3px 0 0 7px;
 }
 
-.user_name {
+.user-name {
   display: inline-block;
   margin: 17px 0 0 10px;
   font-weight: lighter;
+}
+
+.like-button,
+.comment-button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+
+.like-button {
+  background-image: url('./images/likes.png');
+}
+
+.like-button:hover {
+  cursor: pointer;
+}
+
+.comment-button {
+  background-image: url('./images/comment_bubble.png');
+  margin-left: 20px;
+}
+
+.like-count {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 25px;
+  margin-top: 8px;
+  font-size: 12px
 }
 
 /**************************************************/
