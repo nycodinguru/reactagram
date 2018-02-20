@@ -114,8 +114,6 @@ class App extends Component {
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                     />
-                    <NavBar user={this.state.userData}/>
-                    <LandingPage {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
                 );
               }}
