@@ -14,6 +14,17 @@ Reactagram.user = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+Reactagram.allUsers = (req, res, next) => {
+  db
+    .manyOrNone('SELECT * FROM users')
+    .then(users => {
+      res.locals.users = users;
+      next();
+    })
+    .catch(err => console.log(err));
+};
+
+
 Reactagram.allPosts = (req, res, next) => {
   db
     .manyOrNone('SELECT * FROM posts')

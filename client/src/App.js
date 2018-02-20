@@ -8,6 +8,7 @@ import {
 import './App.css';
 import axios from 'axios';
 
+import NavBar from './components/NavBar';
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -22,6 +23,7 @@ class App extends Component {
 
     this.state = {
       id: 1,
+      allUserData: "notloaded",
       userData: {},
       postsData: '',
     };
@@ -37,6 +39,16 @@ class App extends Component {
     });
   }
 
+  allUsers(){
+    axios({
+      url: 'http://localhost:3000/api/reactagram/users',
+      method: 'get'
+    }).then(response => {
+      console.log('allUser: ', response.data)
+      this.setState({ allUserData: response.data });
+    });
+  }
+
   queryPosts() {
     axios({
       url: 'http://localhost:3000/api/reactagram/posts',
@@ -48,8 +60,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.queryPosts(), 
+    this.queryPosts();
     this.grabUserObj();
+    this.allUsers();
   }
 
   render() {
@@ -58,16 +71,14 @@ class App extends Component {
         <Router>
           <Switch>
             <Route
-              exact
-              path="/"
+              exact path="/"
               render={() => <Redirect to="/reactagram" />}
             />
 
             {/********************** ON HOLD SECTION **********************/}
             {/********************** LOGIN AND SIGNUP *********************/}
             <Route
-              exact
-              path="/login"
+              exact path="/login"
               render={props => {
                 return (
                   <div>
@@ -80,75 +91,66 @@ class App extends Component {
             />
 
             <Route
-              exact
-              path="/signup"
+              exact path="/signup"
               render={props => {
                 return <Signup />;
               }}
             />
 
             {/************************* LANDING PAGE ************************/}
-            {/********************* WAS WORKING ON HERE *********************/}
+            {/***************************************************************/}
             <Route
-              exact
-              path="/reactagram"
+              exact path="/reactagram"
               render={props => {
                 return (
-                  <div>
-
-                    <nav> 
-                      <a href="/profile" id="profile-photo"> </a>
-                      <div id="reactagram-logo"></div>
-                      <a href="/profile" id="profile-photo"> </a>
-                    </nav>
-
-                    <LandingPage {...props} posts={this.state.postsData}/>
+                  <div id="landingPage">
+                    <NavBar />
+                    <LandingPage {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
                 );
               }}
             />
 
+            {/************************* PROFILE PAGE ************************/}
+            {/***************************************************************/}
             <Route
-              exact
-              path="/profile"
+              exact path="/profile"
               render={props => {
-                return <Profile />;
+                return (
+                  <div>
+                    <NavBar />
+                    <Profile />
+                  </div>
+                )
               }}
             />
 
+            {/*********************** SINGLE POST PAGE **********************/}
+            {/***************************************************************/}
             <Route
               path='/reactagram/posts/:id'
               render={props => {
                 return(
                   <div>
-                  <nav>
-                      <a href="/profile" id="profile-photo"></a> 
-                      <div id="reactagram-logo"></div>
-                      <ul>
-                        <li>
-                          <a href="/createpost">Create</a>
-                        </li>
-                        <li>
-                          <a href="/">Log Out</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  <SinglePost {...props} postsData={this.state.postsData}/>
+                    <NavBar />
+                    <SinglePost {...props} postsData={this.state.postsData}/>
                   </div>
                   )
               }}
-
-              />
+            />
 
             <Route
-              exact
-              path="/commmentform"
-
+              exact path="/commmentform"
               render={props => {
-                return <AddComment />;
+                return (
+                  <div>
+                    <NavBar />
+                    <AddComment />
+                  </div>
+                )
               }}
             />
-      
+
           </Switch>
         </Router>
       </div>

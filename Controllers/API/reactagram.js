@@ -18,4 +18,9 @@ router.get('/comments', Reactagram.allComments, (req, res) => {
   res.json(commentObj);
 });
 
+router.get('/users', Reactagram.allUsers, (req, res) => {
+  const allUsers = res.locals.users;
+  res.json(allUsers);
+})
+
 module.exports = router;
