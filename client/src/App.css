@@ -99,6 +99,7 @@ nav {
 .post-div:hover {
   transform: scale(1.02 ,1.02);
   transition: .5s;
+  box-shadow: 0 0 13px 1px rgba(228, 76, 143, 1);
 }
 
 .post-photos {
@@ -195,4 +196,9 @@ nav {
   right: 70px;
   border-radius: 30px;
   box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, .4);
+  text-align: center;
+  line-height: 56px;
+  color: white;
+  font-weight: normal;
+  font-size: 20pt;
 }

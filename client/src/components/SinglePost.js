@@ -51,13 +51,17 @@ export default class SinglePost extends Component{
     else {
      
       const photo = this.props.postsData.find( i => {
-        return i.id === this.props.match.params.id
+        return i.id === this.props.match.params.id 
       })
 
       var styles = {background: `url('${photo.image_link}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   };
+
+      const posterID = this.props.users.find(user => {
+        return Number(user.id) === post_user
+      })
     return(
       <div>
         <div className="single-post-container-div">
@@ -65,7 +69,7 @@ export default class SinglePost extends Component{
           <p className="caption-text">{photo.caption}</p>
         </div>
         </div>
-        <div className="new-post" onClick={this.iLike}></div>
+        <div className="new-post" onClick={this.iLike}>+</div>
 
 
       </div>

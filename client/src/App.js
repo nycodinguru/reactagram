@@ -133,7 +133,7 @@ class App extends Component {
                 return(
                   <div>
                     <NavBar />
-                    <SinglePost {...props} postsData={this.state.postsData}/>
+                    <SinglePost {...props} users={this.state.allUserData} postsData={this.state.postsData}/>
                   </div>
                   )
               }}
