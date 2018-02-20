@@ -24,7 +24,6 @@ Reactagram.allUsers = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-
 Reactagram.allPosts = (req, res, next) => {
   db
     .manyOrNone('SELECT * FROM posts')
@@ -58,4 +57,16 @@ Reactagram.createComment = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+Reactagram.createPost = (req, res, next) => {
+  db
+    .one(
+      'INSERT INTO posts (image_link, caption, user_id) VALUES ($1, $2, $3) RETURNING *;',
+      [req.body.image_link, req.body.caption, req.body.user_id],
+    )
+    .then(post => {
+      res.locals.newpost = post;
+      next();
+    })
+    .catch(err => console.log(err));
+};
 module.exports = Reactagram;

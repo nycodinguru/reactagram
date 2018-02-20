@@ -45,12 +45,6 @@ export default class AddComment extends Component {
   }
 
   render() {
-    // const photos = this.props.photos.map(el => {
-    //  return(
-    //    <img src={el.url} className="post-photos" key={el.id}/>
-    //)
-    //})
-
     return (
       <div className="comment-form-component">
         <div />
