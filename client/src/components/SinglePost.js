@@ -60,7 +60,7 @@ export default class SinglePost extends Component{
                   };
 
       const posterID = this.props.users.find(user => {
-        return Number(user.id) === post_user
+        return Number(user.id) === photo.id
       })
     return(
       <div>
