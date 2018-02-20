@@ -6,7 +6,9 @@ export default class SinglePost extends Component{
     super(props)
 
     this.state = {poster: {},
-                  loaded: false}
+                  loaded: false,
+                  photoliked: false,
+                 }
     this.grabPostersObj = this.grabPostersObj.bind(this);
   }
 
@@ -29,6 +31,16 @@ export default class SinglePost extends Component{
   componentDidMount(){
   }
 
+  iLike(){
+    axios({
+      url: `http://localhost:3000/api/reactagram/users/`,
+      method: "post",
+      data: this.state.newLike
+    }).then( response => {
+      this.setState({photoliked: true });
+    });
+  }
+
 
   render(){
     if (this.props.postsData.length === 0){
@@ -37,7 +49,7 @@ export default class SinglePost extends Component{
        )
     }
     else {
-      //this.grabPostersObj()
+     
       const photo = this.props.postsData.find( i => {
         return i.id === this.props.match.params.id
       })
@@ -53,7 +65,7 @@ export default class SinglePost extends Component{
           <p className="caption-text">{photo.caption}</p>
         </div>
         </div>
-        <div className="new-post"></div>
+        <div className="new-post" onClick={this.iLike}></div>
 
 
       </div>

@@ -45,4 +45,17 @@ Reactagram.allComments = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+Reactagram.createComment = (req, res, next) => {
+  db
+    .one(
+      'INSERT INTO comments (comment_text, u_id, p_id) VALUES ($1, $2, $3) RETURNING *;',
+      [req.body.comment_text, req.body.u_id, req.body.p_id],
+    )
+    .then(comment => {
+      res.locals.comment = comment;
+      next();
+    })
+    .catch(err => console.log(err));
+};
+
 module.exports = Reactagram;
