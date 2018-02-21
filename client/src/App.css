@@ -395,7 +395,7 @@ nav {
 .landing-page-backdrop{
   position: relative;
   top: -700px;
-  z-index: 0;
+  z-index: 2;
   filter: blur(6px);
   opacity: .4;
 }
@@ -421,7 +421,11 @@ nav {
   background-color: skyblue;
   width: 550px;
 }
-
+.delete-button:hover {
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 
 /**************************************************/

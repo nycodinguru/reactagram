@@ -14,6 +14,7 @@ export default class LandingPage extends Component {
 	}
 
 	goHome(){
+		console.log("clicked!")
 		this.props.history.push('/reactagram');
 	}
 

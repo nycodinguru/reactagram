@@ -60,7 +60,6 @@ export default class LandingPage extends Component {
 				<div id="all-posts"> 
 					{posts}
 				</div>
-				<div className="new-post">+</div>
 			</section>
 		)}
 	}

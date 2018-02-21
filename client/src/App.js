@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  Redirect
 } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
@@ -34,7 +34,7 @@ class App extends Component {
   grabUserObj() {
     axios({
       url: `http://localhost:3000/api/reactagram/users/${this.state.id}`,
-      method: 'get',
+      method: 'get'
     }).then(response => {
       // console.log('grabUserObj: ', response.data);
       this.setState({ userData: response.data });
@@ -44,7 +44,7 @@ class App extends Component {
   allUsers() {
     axios({
       url: 'http://localhost:3000/api/reactagram/users',
-      method: 'get',
+      method: 'get'
     }).then(response => {
       // console.log('allUser: ', response.data);
       this.setState({ allUserData: response.data });
@@ -54,7 +54,7 @@ class App extends Component {
   queryPosts() {
     axios({
       url: 'http://localhost:3000/api/reactagram/posts',
-      method: 'get',
+      method: 'get'
     }).then(response => {
       // console.log(response.data);
       this.setState({ postsData: response.data });
@@ -149,6 +149,7 @@ class App extends Component {
                       user={this.state.userData}
                       users={this.state.allUserData}
                       postsData={this.state.postsData}
+                      currentUserId={this.state.id}
                     />
                     <LandingPageBackdrop
                       {...props}

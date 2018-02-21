@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
 
 export default class CreatePost extends Component {
@@ -22,7 +21,7 @@ export default class CreatePost extends Component {
 
       profile_picture: '',
 
-      username: '',
+      username: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -80,7 +79,7 @@ export default class CreatePost extends Component {
 
           caption: this.state.caption,
 
-          user_id: this.props.userID,
+          user_id: this.props.userID
         })
 
         .then(response => {
