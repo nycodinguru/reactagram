@@ -58,4 +58,17 @@ Reactagram.createComment = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+Reactagram.like = (req, res, next) => {
+  db
+    .one(
+      'INSERT INTO users_likes (user_id, postid, is_liked) VALUES ($1, $2, $3) RETURNING *;',
+      [req.body.user_id, req.body.postid, req.body.is_liked],
+    )
+    .then(likeData => {
+      res.locals.like = likeData;
+      next();
+    })
+    .catch(err => console.log(err));
+};
+
 module.exports = Reactagram;

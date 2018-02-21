@@ -28,5 +28,9 @@ router.post('/comments', Reactagram.createComment, (req, res) => {
   res.json(commentObj);
 });
 
+router.post('/likes', Reactagram.like, (req, res) => {
+  const like = res.locals.like;
+  res.json(like);
+});
 
 module.exports = router;

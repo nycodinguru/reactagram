@@ -99,7 +99,6 @@ nav {
 .post-div:hover {
   transform: scale(1.02 ,1.02);
   transition: .5s;
-  box-shadow: 0 0 13px 1px rgba(228, 76, 143, 1);
 }
 
 .post-photos {
@@ -140,6 +139,7 @@ nav {
   width: 500px;
   margin: 100px auto 100px auto;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
+  background: white;
 }
 
 .single-post-image-div{
@@ -163,11 +163,13 @@ nav {
   width: 20px;
   display: inline-block;
   padding-left: 2px;
+  cursor: pointer;
 }
 
 .likes-div p{
   font-size: 15pt;
   margin: 0 0 0 31px;
+  font-weight: lighter;
 }
 
 .comments-div{
@@ -201,4 +203,40 @@ nav {
   color: white;
   font-weight: normal;
   font-size: 20pt;
+  transition: .4s;
+}
+.new-post:hover{
+  transition: .4s;
+  background: rgba(37, 179, 155, 1);
+  cursor: pointer;
+  }
+.poster-info{
+  position: relative;
+  right: 0;
+  width: 186px;
+  float: right;
+  height: 33px;
+  margin-top: 11px;
+}
+.post-profile-picture{
+  height: 32px;
+  width: 32px;
+  border-radius: 15px;
+  position: relative;
+}
+.post-username{
+  margin: 0;
+  position: relative;
+  top: -26px;
+  left: 41px;
+  font-size: 14pt;
+  font-weight: lighter;
+  width: 136px;
+}
+.landing-page-backdrop{
+  position: relative;
+  top: -796px;
+  z-index: -100;
+  filter: blur(6px);
+  opacity: .4;
 }
