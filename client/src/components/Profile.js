@@ -3,13 +3,22 @@ import { Link } from 'react-router-dom';
 
 export default class Profile extends Component {
 	render(){
-		if(!this.props.user || this.props.posts.length === 0){
+		if(!this.props.user || this.props.posts.length === 0 || this.props.allUser === 'notloaded'){
       		return <div className="loading-div"></div>
     	}
     	else {
-    		const photo = this.props.user.profile_picture;
-			const userName = this.props.user.username;
-			const email = this.props.user.email;
+
+    		const currentUser = this.props.allUser.find(el => {
+    			if(el.id === this.props.match.params.id) {
+    				return el
+    			}
+    		})
+
+    		console.log(currentUser)
+
+    		const photo = currentUser.profile_picture;
+			const userName = currentUser.username;
+			const email = currentUser.email;
 
 // USING FILTER TO FIND ALL THE POSTS THAT CURRENT USER MADE BY MATCHING PARAMS OF THE ID NUMBER
 			const posts = this.props.posts.filter(el => {

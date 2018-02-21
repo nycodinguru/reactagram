@@ -26,7 +26,7 @@ class App extends Component {
     this.state = {
       id: 1,
       allUserData: 'notloaded',
-      userData: 'notloaded',
+      userData: null,
       postsData: '',
     };
   }
@@ -129,12 +129,8 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar {...props} user={this.state.userData} />
-                    <Profile
-                      {...props}
-                      user={this.state.userData}
-                      posts={this.state.postsData}
-                    />
+                    <NavBar {...props} user={this.state.userData} allUser={this.state.allUserData}/>
+                    <Profile {...props} user={this.state.userData} posts={this.state.postsData} allUser={this.state.allUserData}/>
                   </div>
                 );
               }}
