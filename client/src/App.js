@@ -24,8 +24,8 @@ class App extends Component {
     this.state = {
       id: 1,
       allUserData: "notloaded",
-      userData: "notloaded",
-      postsData: '',
+      userData: null,
+      postsData: null,
     };
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
       url: `http://localhost:3000/api/reactagram/users/${this.state.id}`,
       method: 'get'
     }).then(response => {
-      console.log(response.data);
+      // console.log('grabUserObj: ', response.data);
       this.setState({ userData: response.data });
     });
   }
@@ -44,7 +44,7 @@ class App extends Component {
       url: 'http://localhost:3000/api/reactagram/users',
       method: 'get'
     }).then(response => {
-      console.log('allUser: ', response.data);
+      // console.log('allUser: ', response.data);
       this.setState({ allUserData: response.data });
     });
   }
@@ -54,7 +54,7 @@ class App extends Component {
       url: 'http://localhost:3000/api/reactagram/posts',
       method: 'get'
     }).then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       this.setState({ postsData: response.data });
     });
   }
@@ -108,14 +108,12 @@ class App extends Component {
               render={props => {
                 return (
                   <div id="landingPage">
-                    <NavBar />
+                    <NavBar user={this.state.userData}/>
                     <LandingPage
                       {...props}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
-                    />
-                    <NavBar user={this.state.userData}/>
-                    <LandingPage {...props} posts={this.state.postsData} users={this.state.allUserData}/>
+                    />                    
                   </div>
                 );
               }}
@@ -124,14 +122,12 @@ class App extends Component {
             {/************************* PROFILE PAGE ************************/}
             {/***************************************************************/}
             <Route
-              exact
-              path="/profile"
-              exact path="/users/:id"
+              exact path="/reactagram/users/:id"
               render={props => {
                 return (
                   <div>
                     <NavBar user={this.state.userData}/>
-                    <Profile {...props} user={this.state.userData}/>
+                    <Profile {...props} user={this.state.userData} posts={this.state.postsData}/>
                   </div>
                 );
               }}
@@ -144,26 +140,30 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar />
+                    <NavBar user={this.state.userData} />
                     <SinglePost {...props} postsData={this.state.postsData} />
                   </div>
                 );
               }}
             />
 
+            {/********************** COMMENT FORM PAGE **********************/}
+            {/***************************************************************/}
             <Route
               exact
               path="/commmentform"
               render={props => {
                 return (
                   <div>
-                    <NavBar />
+                    <NavBar user={this.state.userData} />
                     <AddComment />
                   </div>
                 );
               }}
             />
 
+          {/*********************** SHOW COMMENTS PAGE **********************/}
+            {/***************************************************************/}
             <Route
               exact
               path="/reactagram/showcomments"
