@@ -18,6 +18,7 @@ import SinglePost from './components/SinglePost';
 import AddComment from './components/AddComment';
 import ShowComments from './components/ShowComments';
 import CreatePost from './components/CreatePost';
+import NewPostIcon from './components/NewPostIcon';
 
 class App extends Component {
   constructor(props) {
@@ -88,7 +89,11 @@ class App extends Component {
                   <div>
                     <div id="reactagram-logo" />
                     <Login />
-                    <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
+                    <LandingPageBackdrop
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                    />
                   </div>
                 );
               }}
@@ -116,6 +121,7 @@ class App extends Component {
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                     />
+                    <NewPostIcon {...props} />
                   </div>
                 );
               }}
@@ -135,6 +141,7 @@ class App extends Component {
                       user={this.state.userData}
                       posts={this.state.postsData}
                     />
+                    <NewPostIcon {...props} />
                   </div>
                 );
               }}
@@ -159,6 +166,7 @@ class App extends Component {
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                     />
+                    <NewPostIcon {...props} />
                   </div>
                 );
               }}
@@ -187,10 +195,19 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar {...props} user={this.state.userData}/>
-                    <SinglePost {...props} user={this.state.userData} users={this.state.allUserData} postsData={this.state.postsData}/>
+                    <NavBar {...props} user={this.state.userData} />
+                    <SinglePost
+                      {...props}
+                      user={this.state.userData}
+                      users={this.state.allUserData}
+                      postsData={this.state.postsData}
+                    />
                     <ShowComments allUserData={this.state.allUserData} />
-                    <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
+                    <LandingPageBackdrop
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                    />
                   </div>
                 );
               }}
