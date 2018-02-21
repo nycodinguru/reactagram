@@ -108,21 +108,24 @@ nav {
   justify-content: center;
 }
 
-.post-div {
+.post-div,
+.profile-posts-div {
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.19);
   height: 420px;
   width: 300px;
-  margin: 30px;
+  margin: 25px;
   display: inline-block;
   transition: 0.3s;
 }
 
-.post-div:hover {
+.post-div:hover,
+.profile-posts-div:hover {
   transform: scale(1.02, 1.02);
   transition: 0.5s;
 }
 
-.post-photos {
+.post-photos,
+.my-posts {
   width: 100%;
   height: 300px;
 }
@@ -172,9 +175,6 @@ nav {
 
 .like-button:hover {
   background-image: url('./images/liked.png');
-}
-
-.like-button:hover {
   cursor: pointer;
 }
 
@@ -198,8 +198,8 @@ nav {
 /****************** PROFILE PAGE ******************/
 /**************************************************/
 
-#profile-page {
-  padding-top: 20px;
+#profile-posts-section {
+  margin-top: 20px;
 }
 
 #profile-photo-div,
@@ -254,33 +254,6 @@ nav {
   background-color: white;
 }
 
-#profile-posts-section {
-  width: 70%;
-  margin-top: 50px;
-  margin-left: 15%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.profile-posts-div {
-  width: 300px;
-  height: 390px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.19);
-  transition: 0.3s;
-}
-
-.profile-posts-div:hover {
-  transform: scale(1.02, 1.02);
-  transition: 0.5s;
-}
-
-.my-posts {
-  width: 100%;
-  height: 300px;
-}
 
 /***** MEDIA QUERY FOR PROFILE PAGE *****/
 @media screen and (max-width: 700px) {
