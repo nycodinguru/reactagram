@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  Redirect
 } from 'react-router-dom';
 
 import axios from 'axios';
@@ -28,7 +28,7 @@ export default class CreatePost extends Component {
 
       profile_picture: '',
 
-      username: '',
+      username: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -86,7 +86,7 @@ export default class CreatePost extends Component {
 
           caption: this.state.caption,
 
-          user_id: this.props.userID,
+          user_id: this.props.userID
         })
 
         .then(response => {
