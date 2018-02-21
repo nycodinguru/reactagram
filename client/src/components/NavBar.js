@@ -9,13 +9,17 @@ class NavBar extends Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.goToProfile = this.goToProfile.bind(this);
+  }
+
+   goToProfile() {
+    console.log('props are:', this.props);
+    this.props.history.push(`/reactagram/users/${this.props.user.id}`);
   }
 
   handleClick() {
-    // console.log('sup from handleclick =>');
     console.log('props are:', this.props);
     this.props.history.push('/reactagram');
-    // <Redirect to="/" push />;
   }
 
   render() {
@@ -35,9 +39,8 @@ class NavBar extends Component {
               alt="https://i.imgur.com/ibE1DjA.png"
             />
             {/*<div id="reactagram-logo"></div>*/}
-            <a href={`/reactagram/users/${user}`} id="profile-photo">
-              {' '}
-            </a>
+            <div onClick={this.goToProfile} id="profile-photo">
+            </div>
           </nav>
         </div>
       );
