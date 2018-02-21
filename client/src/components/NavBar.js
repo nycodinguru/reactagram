@@ -18,7 +18,7 @@ class NavBar extends Component {
   }
 
   handleClick() {
-    console.log('props are:', this.props);
+    // console.log('props are:', this.props);
     this.props.history.push('/reactagram');
   }
 
@@ -27,7 +27,7 @@ class NavBar extends Component {
       return <div className="loading-div" />;
     } else {
       // console.log(this.props.user)
-      const user = this.props.user.id;
+      // const user = this.props.user.id;
 
       return (
         <div className="nav-shadow">

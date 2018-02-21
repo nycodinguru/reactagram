@@ -169,7 +169,7 @@ class App extends Component {
                 return (
                   <div>
                     <NavBar {...props} user={this.state.userData} />
-                    <AddComment />
+                    
                   </div>
                 );
               }}

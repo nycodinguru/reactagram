@@ -8,13 +8,14 @@ export default class Profile extends Component {
     	}
     	else {
 
+// USING FIND TO FIND THE USER WHICH MATCHES THE PARAMS ID AND THE USER ID
     		const currentUser = this.props.allUser.find(el => {
     			if(el.id === this.props.match.params.id) {
     				return el
     			}
     		})
 
-    		console.log(currentUser)
+    		// console.log(currentUser)
 
     		const photo = currentUser.profile_picture;
 			const userName = currentUser.username;
@@ -73,6 +74,7 @@ export default class Profile extends Component {
 					<div id="profile-posts-section">
 							{eachPosts}
 					</div>
+					<div className="new-post">+</div>
 				</section>
 			)
 		}

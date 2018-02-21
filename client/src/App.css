@@ -44,6 +44,7 @@ section {
   height: 45px;
   width: 45px;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 #react-logo {
@@ -102,7 +103,8 @@ nav {
 /****************** LANDING PAGE ******************/
 /**************************************************/
 
-#all-posts {
+#all-posts,
+#profile-posts-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -244,6 +246,10 @@ nav {
   font-weight: normal;
 }
 
+.edit-button-div {
+  margin-top: 30px;
+}
+
 .edit-profile-button {
   width: 130px;
   height: 30px;
@@ -293,6 +299,10 @@ nav {
 
   .user-email {
     font-size: 14px;
+  }
+
+  .edit-button-div {
+    margin-top: 0;
   }
 
   .edit-profile-button {
@@ -408,6 +418,24 @@ nav {
   z-index: 3;
 }
 
+/*@media screen and (max-width: 414px) {
+  
+  #profile-photo {
+    background-image: url('./images/yerim.png');
+    right: 80px;
+  }
+
+  #reactagram-logo {
+    margin-left: 45px;
+    margin-right: 0;
+  } 
+
+  .single-post-image-div {
+    height: 400px;
+
+  }
+}*/
+
 
 /**************************************************/
 /*************** SHOW COMMENTS PAGE ***************/
@@ -421,7 +449,6 @@ nav {
   background-color: skyblue;
   width: 550px;
 }
-
 
 
 /**************************************************/
