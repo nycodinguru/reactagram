@@ -48,7 +48,7 @@ Reactagram.createComment = (req, res, next) => {
   db
     .one(
       'INSERT INTO comments (comment_text, u_id, p_id) VALUES ($1, $2, $3) RETURNING *;',
-      [req.body.comment_text, req.body.u_id, req.body.p_id],
+      [req.body.comment_text, req.body.u_id, req.body.p_id]
     )
     .then(comment => {
       res.locals.comment = comment;
@@ -58,15 +58,18 @@ Reactagram.createComment = (req, res, next) => {
 };
 
 Reactagram.createPost = (req, res, next) => {
+  console.log('insert something here');
+};
+
+Reactagram.destroy = (req, res, next) => {
   db
-    .one(
-      'INSERT INTO posts (image_link, caption, user_id) VALUES ($1, $2, $3) RETURNING *;',
-      [req.body.image_link, req.body.caption, req.body.user_id],
-    )
-    .then(post => {
-      res.locals.newpost = post;
+    .none('DELETE FROM posts WHERE id = $1', [req.params.id])
+    .then(() => {
       next();
     })
-    .catch(err => console.log(err));
+    .catch(error => {
+      console.log('error encountered in posts.destroy. error:', error);
+    });
 };
+
 module.exports = Reactagram;

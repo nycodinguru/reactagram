@@ -45,18 +45,20 @@ export default class ShowComments extends Component {
         var styles = {
           background: `url('${posterID.profile_picture}')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+          height: '60px',
+          width: '60px'
         };
 
         return (
-          <div>
-            <p key={key}>
+          <div key={key}>
+            <div>
               {comment.comment_text}
               {posterID.username}
               <div className="profile_picture" style={styles}>
                 {' '}
               </div>
-            </p>
+            </div>
           </div>
         );
       });

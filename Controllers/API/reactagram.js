@@ -33,4 +33,9 @@ router.post('/newpost', Reactagram.createPost, (req, res) => {
   res.json(commentObj);
 });
 
+router.delete('/posts/:id', Reactagram.destroy, (req, res) => {
+  const delPostObj = req.params.id;
+  res.json(delPostObj);
+});
+
 module.exports = router;
