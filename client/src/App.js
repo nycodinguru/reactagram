@@ -176,7 +176,9 @@ class App extends Component {
                 return( 
                   <div>
                     <NavBar user={this.state.userData}/>
-                    <ShowComments allUserData={this.state.allUserData} />;
+                    <SinglePost {...props} user={this.state.userData} users={this.state.allUserData} postsData={this.state.postsData}/>
+                    <ShowComments allUserData={this.state.allUserData} />
+                    <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
                   )
               }}

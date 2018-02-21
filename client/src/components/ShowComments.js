@@ -63,9 +63,9 @@ export default class ShowComments extends Component {
         );
       });
       return (
-        <div>
+        <section>
           <div>{allComments}</div>
-        </div>
+        </section>
       );
     }
   }

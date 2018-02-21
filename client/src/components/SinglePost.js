@@ -43,7 +43,7 @@ export default class SinglePost extends Component{
     this.setState({user_id: [user_id],
                   postid: [postid],
                   is_liked: true
-                 }),
+                 })
 
     this.iLikeUpdate()
 

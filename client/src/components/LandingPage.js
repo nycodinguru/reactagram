@@ -45,7 +45,7 @@ export default class LandingPage extends Component {
 						<div>
 							<div className="button-div">
 									<div className="like-button" onClick={this.likeClicked}></div>
-								<div className="like-count">24</div>
+								<div className="like-count">{el.total_likes}</div>
 								<div className="comment-button"></div>
 							</div>
 							<p className="post-caption">{el.caption}</p>
@@ -60,6 +60,7 @@ export default class LandingPage extends Component {
 				<div id="all-posts"> 
 					{posts}
 				</div>
+				<div className="new-post">+</div>
 			</section>
 		)}
 	}
