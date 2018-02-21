@@ -87,6 +87,17 @@ nav {
   margin: 24vh auto 0 auto;
 }
 
+
+/**************************************************/
+/*************** SHOW COMMENTS PAGE ***************/
+/**************************************************/
+
+#login-page #reactagram-logo {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
 /**************************************************/
 /****************** LANDING PAGE ******************/
 /**************************************************/
@@ -225,6 +236,7 @@ nav {
 .user-name {
   font-size: 34px;
   font-weight: lighter;
+  float: left;
 }
 
 .user-email {
@@ -237,8 +249,9 @@ nav {
   height: 30px;
   font-size: 16px;
   border-radius: 3px;
-  float: right;
-  margin: 15px 490px 10px 0;
+  float: left;
+  margin: 12px 0 10px 30px;
+  background-color: white;
 }
 
 #profile-posts-section {
@@ -269,8 +282,60 @@ nav {
   height: 300px;
 }
 
+/***** MEDIA QUERY FOR PROFILE PAGE *****/
+@media screen and (max-width: 700px) {
+
+  #profile-page {
+    padding-top: 0px;
+  }
+
+  #profile-photo-div,
+  #profile-info-div {
+    height: 100px;
+  }
+
+  #profile-photo-div {
+    width: 40%;
+  }
+
+  #profile-info-div {
+    width: 60%;
+  }
+
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  #profile-info-div 
+  .user-name,
+  .user-email {
+    padding-left: 30px;
+  }
+
+  #profile-info-div
+  .user-name {
+    font-size: 25px;
+  }
+
+  .user-email {
+    font-size: 14px;
+  }
+
+  .edit-profile-button {
+    height: 22px;
+    font-size: 12px;
+    margin: 0 0 0 30px;
+  }
+
+  #profile-posts-section {
+    margin-top: 30px;
+  }
+
+}
+
 /**************************************************/
-/****************** SINGLE POST PAGE **************/
+/***************** SINGLE POST PAGE ***************/
 /**************************************************/
 
 .single-post-container-div {
@@ -347,8 +412,24 @@ nav {
   line-height: 55px;
 }
 
+
 /**************************************************/
-/****************** CREATE POST PAGE **************/
+/*************** SHOW COMMENTS PAGE ***************/
+/**************************************************/
+
+#show-comments-section {
+  
+}
+
+#show-comments-div {
+  background-color: skyblue;
+  width: 550px;
+}
+
+
+
+/**************************************************/
+/***************** CREATE POST PAGE ***************/
 /**************************************************/
 /*//remove when styling begins*/
 .post-form-component {

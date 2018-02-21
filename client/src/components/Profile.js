@@ -52,10 +52,12 @@ export default class Profile extends Component {
 						</div>
 
 						<div id="profile-info-div">
-							<p className="user-name">{userName}</p>
-							<Link to={`/reactagram/profile`}>
-								<button className="edit-profile-button">Edit Profile</button>
-							</Link>
+							<div className="edit-button-div clearfix">
+								<p className="user-name">{userName}</p>
+								<Link to={`/reactagram/profile`}>
+									<button className="edit-profile-button">Edit Profile</button>
+								</Link>
+							</div>
 							<p className="user-email">{email}</p>
 						</div>
 					</div>

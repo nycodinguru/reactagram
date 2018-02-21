@@ -82,13 +82,13 @@ class App extends Component {
             {/********************** LOGIN AND SIGNUP *********************/}
             <Route
               exact
-              path="/login"
+              path="/reactagram/login"
               render={props => {
                 return (
                   <div>
                     <div id="reactagram-logo" />
-                    <LandingPage />
                     <Login />
+                    <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
                 );
               }}
@@ -115,7 +115,6 @@ class App extends Component {
                       {...props}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
-
                     />
 
                   </div>

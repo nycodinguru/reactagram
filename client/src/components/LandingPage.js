@@ -10,7 +10,7 @@ export default class LandingPage extends Component {
 
 	render(){
 // IF THE OBJECT IS EMPTY, DISPLAY LOADING IMAGE
-		if(this.props.users === "notloaded"){
+		if(this.props.users === "notloaded" || this.props.posts.length === 0){
 			return <div className="loading-div"></div>
 		} 
 		else {

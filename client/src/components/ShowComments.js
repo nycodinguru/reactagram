@@ -32,9 +32,10 @@ export default class ShowComments extends Component {
   }
 
   render() {
-    if (this.props.allUserData === 'notloaded') {
+    if (this.props.allUserData === 'notloaded' || this.state.showComments.length === 0) {
       return <div className="loading-div" />;
-    } else {
+    } 
+    else {
       const allComments = this.state.showComments.map((comment, key) => {
         var commenterId = comment.u_id;
 
@@ -53,18 +54,19 @@ export default class ShowComments extends Component {
         return (
           <div key={key}>
             <div>
-              {comment.comment_text}
-              {posterID.username}
-              <div className="profile_picture" style={styles}>
-                {' '}
-              </div>
+              <p>{comment.comment_text}</p>
+              <p>{posterID.username}</p>
+              <div className="profile_picture" style={styles}></div>
             </div>
           </div>
         );
       });
+
       return (
         <section>
-          <div>{allComments}</div>
+          <div id="show-comments-div">
+            {allComments}
+          </div>
         </section>
       );
     }
