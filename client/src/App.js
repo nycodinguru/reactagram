@@ -144,7 +144,7 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar />
+                    <NavBar user={this.state.userData} />
                     <SinglePost {...props} user={this.state.userData} users={this.state.allUserData} postsData={this.state.postsData}/>
                     <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
@@ -173,7 +173,12 @@ class App extends Component {
               exact
               path="/reactagram/showcomments"
               render={props => {
-                return <ShowComments allUserData={this.state.allUserData} />;
+                return( 
+                  <div>
+                    <NavBar user={this.state.userData}/>
+                    <ShowComments allUserData={this.state.allUserData} />;
+                  </div>
+                  )
               }}
             />
 
@@ -183,7 +188,7 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar />
+                    <NavBar user={this.state.userData} />
                     <CreatePost
                       userID={this.state.id}
                       userObj={this.state.userData}
