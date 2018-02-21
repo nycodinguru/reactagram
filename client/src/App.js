@@ -10,6 +10,7 @@ import axios from 'axios';
 
 import NavBar from './components/NavBar';
 import LandingPage from './components/LandingPage';
+import LandingPageBackdrop from './components/LandingPageBackdrop';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Profile from './components/Profile';
@@ -145,7 +146,8 @@ class App extends Component {
                 return (
                   <div>
                     <NavBar />
-                    <SinglePost {...props} postsData={this.state.postsData} />
+                    <SinglePost {...props} user={this.state.userData} users={this.state.allUserData} postsData={this.state.postsData}/>
+                    <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
                 );
               }}

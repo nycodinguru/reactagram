@@ -57,6 +57,7 @@ Reactagram.createComment = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+
 Reactagram.createPost = (req, res, next) => {
   console.log('insert something here');
 };
@@ -70,6 +71,18 @@ Reactagram.destroy = (req, res, next) => {
     .catch(error => {
       console.log('error encountered in posts.destroy. error:', error);
     });
+
+Reactagram.like = (req, res, next) => {
+  db
+    .one(
+      'INSERT INTO users_likes (user_id, postid, is_liked) VALUES ($1, $2, $3) RETURNING *;',
+      [req.body.user_id, req.body.postid, req.body.is_liked],
+    )
+    .then(likeData => {
+      res.locals.like = likeData;
+      next();
+    })
+    .catch(err => console.log(err));
 };
 
 module.exports = Reactagram;

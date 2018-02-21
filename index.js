@@ -2,10 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mustacheExpress = require('mustache-express');
-
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));

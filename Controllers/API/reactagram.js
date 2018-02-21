@@ -8,6 +8,11 @@ router.get('/posts', Reactagram.allPosts, (req, res) => {
   res.json(allPosts);
 });
 
+router.get('/users', Reactagram.allUsers, (req, res) => {
+  const allUsers = res.locals.users;
+  res.json(allUsers);
+})
+
 router.get('/users/:id', Reactagram.user, (req, res) => {
   const userObj = res.locals.user;
   res.json(userObj);
@@ -36,6 +41,11 @@ router.post('/newpost', Reactagram.createPost, (req, res) => {
 router.delete('/posts/:id', Reactagram.destroy, (req, res) => {
   const delPostObj = req.params.id;
   res.json(delPostObj);
+
+router.post('/likes', Reactagram.like, (req, res) => {
+  const like = res.locals.like;
+  res.json(like);
+
 });
 
 module.exports = router;

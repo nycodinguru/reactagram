@@ -7,9 +7,12 @@ export default class SinglePost extends Component{
 
     this.state = {poster: {},
                   loaded: false,
-                  photoliked: false,
+                  user_id: "",
+                  postid: "",
+                  is_liked: false
                  }
     this.grabPostersObj = this.grabPostersObj.bind(this);
+    this.likeHandler = this.likeHandler.bind(this);
   }
 
    grabPostersObj(){
@@ -31,19 +34,43 @@ export default class SinglePost extends Component{
   componentDidMount(){
   }
 
-  iLike(){
-    axios({
-      url: `http://localhost:3000/api/reactagram/users/`,
+
+  likeHandler(){
+
+    const user_id = this.props.user.id;
+    const postid = this.props.match.params.id;
+
+    this.setState({user_id: [user_id],
+                  postid: [postid],
+                  is_liked: true
+                 }),
+
+    this.iLikeUpdate()
+
+  }
+
+  iLikeUpdate(){
+
+    const is_liked = this.state.is_liked;
+    const user_id = this.state.user_id;
+    const postid = this.state.postid;
+
+    const newLikeData = {is_liked: [is_liked],
+                user_id: [user_id],
+                postid: [postid]};
+
+     axios({
+      url: `http://localhost:3000/api/reactagram/likes/`,
       method: "post",
-      data: this.state.newLike
+      data: newLikeData
     }).then( response => {
-      this.setState({photoliked: true });
+      this.setState({is_liked: true });
     });
   }
 
 
   render(){
-    if (this.props.postsData.length === 0){
+    if (this.props.users === "notloaded" || this.props.postsData.length === 0){
       return(
        <div className="loading-div"></div>
        )
@@ -51,21 +78,35 @@ export default class SinglePost extends Component{
     else {
      
       const photo = this.props.postsData.find( i => {
-        return i.id === this.props.match.params.id
-      })
+        return i.id === this.props.match.params.id })
+
+      const posterID = this.props.users.find(user => {
+        return Number(user.id) === photo.user_id})
+
+      var profilePic = {background: `url('${posterID.profile_picture}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  };
+    
 
       var styles = {background: `url('${photo.image_link}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   };
+
+
+      console.log(posterID)
     return(
       <div>
-        <div className="single-post-container-div">
-        <div className="single-post-image-div" style={styles}></div><div className="likes-and-comments"> <div className="likes-div"><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
-          <p className="caption-text">{photo.caption}</p>
+       <div className="single-post-container-div">
+        <div className="single-post-image-div" style={styles}></div><div className="likes-and-comments"> <div className="likes-div" onClick={this.likeHandler.bind(this)}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
+          <p className="caption-text">{photo.caption}</p> 
+        </div>
+        <div className="poster-info">
+        <div className="post-profile-picture" style={profilePic}></div><p className="post-username">{posterID.username}</p>
         </div>
         </div>
-        <div className="new-post" onClick={this.iLike}></div>
+        <div className="new-post">+</div>
 
 
       </div>
