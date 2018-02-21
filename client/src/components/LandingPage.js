@@ -10,7 +10,7 @@ export default class LandingPage extends Component {
 
 	render(){
 // IF THE OBJECT IS EMPTY, DISPLAY LOADING IMAGE
-		if(this.props.users === "notloaded"){
+		if(this.props.users === "notloaded" || this.props.posts.length === 0){
 			return <div className="loading-div"></div>
 		} 
 		else {
@@ -45,7 +45,7 @@ export default class LandingPage extends Component {
 						<div>
 							<div className="button-div">
 									<div className="like-button" onClick={this.likeClicked}></div>
-								<div className="like-count">24</div>
+								<div className="like-count">{el.total_likes}</div>
 								<div className="comment-button"></div>
 							</div>
 							<p className="post-caption">{el.caption}</p>
@@ -60,6 +60,7 @@ export default class LandingPage extends Component {
 				<div id="all-posts"> 
 					{posts}
 				</div>
+				<div className="new-post">+</div>
 			</section>
 		)}
 	}
