@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -103,7 +97,7 @@ export default class CreatePost extends Component {
 
   render() {
     return (
-      <div className="post-form-component">
+      <div className="create-form-component">
         <div />
 
         <form onSubmit={this.handleSubmit}>

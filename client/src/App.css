@@ -67,7 +67,7 @@ nav {
   top: 0;
   backdrop-filter: blur(6px);
 }
-.nav-shadow{
+.nav-shadow {
   position: fixed;
   width: 100vw;
   height: 55px;
@@ -349,7 +349,7 @@ nav {
 .single-post-container-div {
   height: 700px;
   width: 500px;
-  box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
   background: white;
   position: relative;
   margin: 0;
@@ -457,20 +457,20 @@ nav {
 /*//remove when styling begins*/
 .post-form-component {
   margin-top: 300px;
-  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, .4);
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
   text-align: center;
   line-height: 56px;
   color: white;
   font-weight: normal;
   font-size: 20pt;
-  transition: .4s;
+  transition: 0.4s;
 }
-.new-post:hover{
-  transition: .4s;
+.new-post:hover {
+  transition: 0.4s;
   background: rgba(37, 179, 155, 1);
   cursor: pointer;
-  }
-.poster-info{
+}
+.poster-info {
   position: relative;
   right: 2px;
   width: 150px;
@@ -478,13 +478,13 @@ nav {
   height: 33px;
   margin-top: 11px;
 }
-.post-profile-picture{
+.post-profile-picture {
   height: 32px;
   width: 32px;
   border-radius: 15px;
   position: relative;
 }
-.post-username{
+.post-username {
   margin: 0;
   position: relative;
   top: -26px;
@@ -492,4 +492,12 @@ nav {
   font-size: 14pt;
   font-weight: lighter;
   width: 136px;
+}
+
+/**************************************************/
+/****************** CREATE COMMENT PAGE ***********/
+/**************************************************/
+/*//remove when styling begins*/
+.comment-form-component {
+  margin-top: 200px;
 }

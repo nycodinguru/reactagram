@@ -15,7 +15,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Profile from './components/Profile';
 import SinglePost from './components/SinglePost';
-import AddComment from './components/addcomment';
+import AddComment from './components/AddComment';
 import ShowComments from './components/ShowComments';
 import CreatePost from './components/CreatePost';
 
@@ -110,13 +110,12 @@ class App extends Component {
               render={props => {
                 return (
                   <div id="landingPage">
-                    <NavBar user={this.state.userData}/>
+                    <NavBar {...props} user={this.state.userData} />
                     <LandingPage
                       {...props}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                     />
-
                   </div>
                 );
               }}
@@ -125,12 +124,17 @@ class App extends Component {
             {/************************* PROFILE PAGE ************************/}
             {/***************************************************************/}
             <Route
-              exact path="/reactagram/users/:id"
+              exact
+              path="/reactagram/users/:id"
               render={props => {
                 return (
                   <div>
-                    <NavBar user={this.state.userData}/>
-                    <Profile {...props} user={this.state.userData} posts={this.state.postsData}/>
+                    <NavBar {...props} user={this.state.userData} />
+                    <Profile
+                      {...props}
+                      user={this.state.userData}
+                      posts={this.state.postsData}
+                    />
                   </div>
                 );
               }}
@@ -143,9 +147,18 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar user={this.state.userData} />
-                    <SinglePost {...props} user={this.state.userData} users={this.state.allUserData} postsData={this.state.postsData}/>
-                    <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
+                    <NavBar {...props} user={this.state.userData} />
+                    <SinglePost
+                      {...props}
+                      user={this.state.userData}
+                      users={this.state.allUserData}
+                      postsData={this.state.postsData}
+                    />
+                    <LandingPageBackdrop
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                    />
                   </div>
                 );
               }}
@@ -155,31 +168,31 @@ class App extends Component {
             {/***************************************************************/}
             <Route
               exact
-              path="/commmentform"
+              path="/reactagram/commmentform"
               render={props => {
                 return (
                   <div>
-                    <NavBar user={this.state.userData} />
+                    <NavBar {...props} user={this.state.userData} />
                     <AddComment />
                   </div>
                 );
               }}
             />
 
-          {/*********************** SHOW COMMENTS PAGE **********************/}
+            {/*********************** SHOW COMMENTS PAGE **********************/}
             {/***************************************************************/}
             <Route
               exact
               path="/reactagram/showcomments"
               render={props => {
-                return( 
+                return (
                   <div>
-                    <NavBar user={this.state.userData}/>
+                    <NavBar {...props} user={this.state.userData}/>
                     <SinglePost {...props} user={this.state.userData} users={this.state.allUserData} postsData={this.state.postsData}/>
                     <ShowComments allUserData={this.state.allUserData} />
                     <LandingPageBackdrop {...props} posts={this.state.postsData} users={this.state.allUserData}/>
                   </div>
-                  )
+                );
               }}
             />
 
@@ -189,7 +202,7 @@ class App extends Component {
               render={props => {
                 return (
                   <div>
-                    <NavBar user={this.state.userData} />
+                    <NavBar {...props} user={this.state.userData} />
                     <CreatePost
                       userID={this.state.id}
                       userObj={this.state.userData}
