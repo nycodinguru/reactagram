@@ -71,6 +71,7 @@ Reactagram.destroy = (req, res, next) => {
     .catch(error => {
       console.log('error encountered in posts.destroy. error:', error);
     });
+};
 
 Reactagram.like = (req, res, next) => {
   db

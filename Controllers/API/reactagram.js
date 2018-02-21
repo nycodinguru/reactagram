@@ -41,11 +41,11 @@ router.post('/newpost', Reactagram.createPost, (req, res) => {
 router.delete('/posts/:id', Reactagram.destroy, (req, res) => {
   const delPostObj = req.params.id;
   res.json(delPostObj);
+});
 
 router.post('/likes', Reactagram.like, (req, res) => {
   const like = res.locals.like;
   res.json(like);
-
 });
 
 module.exports = router;

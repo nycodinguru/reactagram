@@ -164,7 +164,7 @@ nav {
 
 .comment-button {
   background-image: url('./images/comment_bubble.png');
-  margin-left: 20px;
+  margin-left: 26px;
 }
 
 .like-count {
@@ -172,8 +172,9 @@ nav {
   display: inline-block;
   width: 30px;
   height: 25px;
-  margin-top: 8px;
-  font-size: 12px;
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: lighter;
 }
 
 /**************************************************/
@@ -183,9 +184,13 @@ nav {
 .single-post-container-div {
   height: 700px;
   width: 500px;
-  margin: 100px auto 100px auto;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
   background: white;
+  left: 25vw;
+  position: relative;
+  margin: 0;
+  top: 100px;
+  z-index: 10;
 }
 
 .single-post-image-div {
@@ -294,8 +299,8 @@ nav {
 }
 .landing-page-backdrop{
   position: relative;
-  top: -796px;
-  z-index: -100;
+  top: -700px;
+  z-index: -1;
   filter: blur(6px);
   opacity: .4;
 }
