@@ -32,6 +32,7 @@ export default class SinglePost extends Component{
   }
 
   componentDidMount(){
+    window.scrollTo(0, 0);
   }
 
 
@@ -56,7 +57,7 @@ export default class SinglePost extends Component{
     const postid = this.state.postid;
 
     const newLikeData = {is_liked: [is_liked],
-                user_id: [user_id],
+                userid: [user_id],
                 postid: [postid]};
 
      axios({
@@ -94,12 +95,10 @@ export default class SinglePost extends Component{
                     backgroundPosition: 'center'
                   };
 
-
-      console.log(posterID)
     return(
-      <div>
+      <div className="single-post-parent-div">
        <div className="single-post-container-div">
-        <div className="single-post-image-div" style={styles}></div><div className="likes-and-comments"> <div className="likes-div" onClick={this.likeHandler.bind(this)}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
+        <div className="single-post-image-div" style={styles}></div><div className="likes-and-comments"> <div className="likes-div" onClick={this.likeHandler}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
           <p className="caption-text">{photo.caption}</p> 
         </div>
         <div className="poster-info">

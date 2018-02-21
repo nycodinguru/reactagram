@@ -190,12 +190,19 @@ nav {
 /****************** SINGLE POST PAGE **************/
 /**************************************************/
 
+.single-post-parent-div{
+  width: 500px;
+  height: 700px;
+  position: relative;
+  top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .single-post-container-div {
   height: 700px;
   width: 500px;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
   background: white;
-  left: 25vw;
   position: relative;
   margin: 0;
   top: 100px;
@@ -262,6 +269,22 @@ nav {
   text-align: center;
   font-size: 21pt;
   line-height: 55px;
+  z-index: 10;
+}
+.landing-page-backdrop{
+  position: relative;
+  top: -700px;
+  z-index: 0;
+  filter: blur(6px);
+  opacity: .4;
+}
+.return-home-div{
+  position: absolute;
+  top: -43px;
+  width: 100vw;
+  padding-bottom: 100%;
+  height: 100%;
+  z-index: 3;
 }
 
 /**************************************************/
@@ -305,11 +328,4 @@ nav {
   font-size: 14pt;
   font-weight: lighter;
   width: 136px;
-}
-.landing-page-backdrop{
-  position: relative;
-  top: -700px;
-  z-index: -1;
-  filter: blur(6px);
-  opacity: .4;
 }

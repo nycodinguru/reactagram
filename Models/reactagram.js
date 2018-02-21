@@ -73,11 +73,23 @@ Reactagram.destroy = (req, res, next) => {
     });
 };
 
+Reactagram.isLiked = (req, res, next) => {
+  db
+    .oneOrNone(
+      'SELECT is_liked FROM user_likes WHERE is_liked = true AND postid = 5 AND userid = 1;',
+    )
+    .then(isLiked => {
+      res.locals.isLiked = isLiked;
+      next();
+    })
+    .catch(err => console.log(err));
+};
+
 Reactagram.like = (req, res, next) => {
   db
     .one(
-      'INSERT INTO users_likes (user_id, postid, is_liked) VALUES ($1, $2, $3) RETURNING *;',
-      [req.body.user_id, req.body.postid, req.body.is_liked],
+      'INSERT INTO user_likes (userid, postid, is_liked) VALUES ($1, $2, $3) RETURNING *;',
+      [req.body.userid, req.body.postid, req.body.is_liked],
     )
     .then(likeData => {
       res.locals.like = likeData;

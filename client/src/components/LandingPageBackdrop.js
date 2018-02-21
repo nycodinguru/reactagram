@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class LandingPage extends Component {
+	constructor(props){
+		super(props)
+
+		this.goHome = this.goHome.bind(this);
+	}
 
 	likeClicked(){
 		console.log('like is clicked')
 
+	}
+
+	goHome(){
+		this.props.history.push('/reactagram');
 	}
 
 	render(){
@@ -37,10 +46,10 @@ export default class LandingPage extends Component {
 							<p className="user-name">{posterID.username}</p>
 						</div>
 
-						<Link to={`/reactagram/posts/${el.id}`}>
+						
 {/* WHEN USER CLICKS ON THE IMAGE, IT LEADS THE USER TO THE SINGLE POST PAGE*/}
 							<div className="post-photos" style={styles}></div>
-						</Link>
+						
 
 						<div>
 							<div className="button-div">
@@ -56,9 +65,10 @@ export default class LandingPage extends Component {
 			//console.log("fmslmsfkl",posts)
 
 		return(
-			<section className="landing-page-backdrop">
+			<section className="landing-page-backdrop" >
 				<div id="all-posts"> 
 					{posts}
+					<div className="return-home-div" onClick={this.goHome}></div>
 				</div>
 			</section>
 		)}
