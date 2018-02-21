@@ -178,12 +178,8 @@ nav {
   height: 700px;
   width: 500px;
   margin: 100px auto 100px auto;
-<<<<<<< HEAD
-  box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
-=======
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
   background: white;
->>>>>>> 103f28301852b22c247061a71154447e43dc0711
 }
 
 .single-post-image-div {
@@ -234,6 +230,7 @@ nav {
 }
 
 .new-post {
+  color: white;
   height: 60px;
   width: 60px;
   background: rgba(221, 80, 143, 0.9);
@@ -242,6 +239,9 @@ nav {
   right: 70px;
   border-radius: 30px;
   box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 21pt;
+  line-height: 55px;
 }
 
 /**************************************************/
@@ -265,8 +265,8 @@ nav {
   }
 .poster-info{
   position: relative;
-  right: 0;
-  width: 186px;
+  right: 2px;
+  width: 150px;
   float: right;
   height: 33px;
   margin-top: 11px;
