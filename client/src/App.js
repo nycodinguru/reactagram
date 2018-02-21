@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
@@ -16,6 +16,7 @@ import Profile from './components/Profile';
 import SinglePost from './components/SinglePost';
 import AddComment from './components/addcomment';
 import ShowComments from './components/ShowComments';
+import CreatePost from './components/CreatePost';
 
 class App extends Component {
   constructor(props) {
@@ -23,8 +24,8 @@ class App extends Component {
 
     this.state = {
       id: 1,
-      allUserData: "notloaded",
-      userData: "notloaded",
+      allUserData: 'notloaded',
+      userData: 'notloaded',
       postsData: '',
     };
   }
@@ -32,7 +33,7 @@ class App extends Component {
   grabUserObj() {
     axios({
       url: `http://localhost:3000/api/reactagram/users/${this.state.id}`,
-      method: 'get'
+      method: 'get',
     }).then(response => {
       console.log(response.data);
       this.setState({ userData: response.data });
@@ -42,7 +43,7 @@ class App extends Component {
   allUsers() {
     axios({
       url: 'http://localhost:3000/api/reactagram/users',
-      method: 'get'
+      method: 'get',
     }).then(response => {
       console.log('allUser: ', response.data);
       this.setState({ allUserData: response.data });
@@ -52,7 +53,7 @@ class App extends Component {
   queryPosts() {
     axios({
       url: 'http://localhost:3000/api/reactagram/posts',
-      method: 'get'
+      method: 'get',
     }).then(response => {
       console.log(response.data);
       this.setState({ postsData: response.data });
@@ -124,12 +125,13 @@ class App extends Component {
             <Route
               exact
               path="/profile"
-              exact path="/users/:id"
+              exact
+              path="/users/:id"
               render={props => {
                 return (
                   <div>
-                    <NavBar user={this.state.userData}/>
-                    <Profile {...props} user={this.state.userData}/>
+                    <NavBar user={this.state.userData} />
+                    <Profile {...props} user={this.state.userData} />
                   </div>
                 );
               }}
@@ -167,6 +169,22 @@ class App extends Component {
               path="/reactagram/showcomments"
               render={props => {
                 return <ShowComments allUserData={this.state.allUserData} />;
+              }}
+            />
+
+            <Route
+              exact
+              path="/reactagram/newpost"
+              render={props => {
+                return (
+                  <div>
+                    <NavBar />
+                    <CreatePost
+                      userID={this.state.id}
+                      userObj={this.state.userData}
+                    />
+                  </div>
+                );
               }}
             />
           </Switch>
