@@ -159,6 +159,10 @@ nav {
 }
 
 .like-button:hover {
+  background-image: url('./images/liked.png');
+}
+
+.like-button:hover {
   cursor: pointer;
 }
 
@@ -175,6 +179,11 @@ nav {
   margin-top: 5px;
   font-size: 15px;
   font-weight: lighter;
+}
+
+.my-posts {
+  width: 200px;
+  height: 200px;
 }
 
 /**************************************************/
