@@ -28,12 +28,12 @@ export default class SinglePost extends Component {
       url: `http://localhost:3000/api/reactagram/users/${
         posterProfile.user_id
       }`,
-      method: 'get',
+      method: 'get'
     }).then(response => {
       console.log("poster's profile found", response.data);
       this.setState({
         poster: response.data,
-        loaded: true,
+        loaded: true
       });
     });
   }
@@ -52,8 +52,7 @@ export default class SinglePost extends Component {
       is_liked: true
     }),
       this.iLikeUpdate();
-
-  };
+  }
 
   iLikeUpdate() {
     const is_liked = this.state.is_liked;
@@ -69,23 +68,21 @@ export default class SinglePost extends Component {
     axios({
       url: `http://localhost:3000/api/reactagram/likes/`,
       method: 'post',
-      data: newLikeData,
+      data: newLikeData
     }).then(response => {
       this.setState({ is_liked: true });
     });
   }
 
-  toggleButtons(){
+  toggleButtons() {
     this.setState(prevState => {
       return {
         showButtons: !prevState.showButtons
       };
     });
   }
- 
-  
 
-  deleteHandler(){
+  deleteHandler() {
     const id = this.props.match.params.id;
 
     axios({
@@ -105,23 +102,25 @@ export default class SinglePost extends Component {
       });
 
       const posterID = this.props.users.find(user => {
-        return Number(user.id) === photo.user_id})
+        return Number(user.id) === photo.user_id;
+      });
 
-      var profilePic = {background: `url('${posterID.profile_picture}')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  };
-    
+      var profilePic = {
+        background: `url('${posterID.profile_picture}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      };
 
-      var styles = {background: `url('${photo.image_link}')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  };
+      var styles = {
+        background: `url('${photo.image_link}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      };
 
-    return(
-      <div className="single-post-parent-div">
-       <div className="single-post-container-div">
-        <div
+      return (
+        <div className="single-post-parent-div">
+          <div className="single-post-container-div">
+            <div
               className="single-post-image-div"
               style={styles}
               onMouseEnter={
@@ -129,22 +128,38 @@ export default class SinglePost extends Component {
                   ? this.toggleButtons
                   : null
               }
-            >{this.state.showButtons ? (
-                <ul className="delete-button" >
-                <li className="edit-button-icon"></li>
-                <li className="delete-button-icon"></li>
-              </ul>
-            ) : (
-              ''
-            )}</div>
-            <div className="likes-and-comments"> <div className="likes-div" onClick={this.likeHandler}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
-          <p className="caption-text">{photo.caption}</p> 
+              onMouseLeave={
+                photo.user_id === this.props.currentUserId
+                  ? this.toggleButtons
+                  : null
+              }
+            >
+              {this.state.showButtons ? (
+                <ul className="delete-button">
+                  <li className="edit-button-icon" />
+                  <li className="delete-button-icon" />
+                </ul>
+              ) : (
+                ''
+              )}
+            </div>
+            <div className="likes-and-comments">
+              {' '}
+              <div className="likes-div" onClick={this.likeHandler}>
+                <p>{photo.total_likes}</p>
+              </div>
+              <div className="comments-div">
+                <p />
+              </div>
+              <p className="caption-text">{photo.caption}</p>
+            </div>
+            <div className="poster-info">
+              <div className="post-profile-picture" style={profilePic} />
+              <p className="post-username">{posterID.username}</p>
+            </div>
+          </div>
         </div>
-        <div className="poster-info">
-        <div className="post-profile-picture" style={profilePic}></div><p className="post-username">{posterID.username}</p>
-        </div>
-        </div>
-         </div>
-    )}
+      );
+    }
   }
 }
