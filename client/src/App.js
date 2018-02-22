@@ -19,6 +19,7 @@ import AddComment from './components/AddComment';
 import ShowComments from './components/ShowComments';
 import CreatePost from './components/CreatePost';
 import NewPostIcon from './components/NewPostIcon';
+import CommentContainer from './components/CommentContainer';
 
 class App extends Component {
   constructor(props) {
@@ -160,6 +161,13 @@ class App extends Component {
                       user={this.state.userData}
                       users={this.state.allUserData}
                       postsData={this.state.postsData}
+                    />
+
+                    <CommentContainer
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                      userID={this.state.id}
                     />
                     <LandingPageBackdrop
                       {...props}

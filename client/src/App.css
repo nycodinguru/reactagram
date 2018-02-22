@@ -489,6 +489,31 @@ nav {
 /****************** CREATE COMMENT PAGE ***********/
 /**************************************************/
 /*//remove when styling begins*/
-.comment-form-component {
+.comment-container {
   margin-top: 200px;
+  /*height: 200px;
+  width: 400px;*/
+  height: 700px;
+  width: 500px;
+  box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
+  /*background: white;*/
+  position: relative;
+  margin: 0;
+  top: 100px;
+  z-index: 10;
+  background-color: red;
+}
+.show-comments-div {
+  margin-top: 200px;
+  /*height: 200px;
+  width: 400px;*/
+  height: 700px;
+  width: 500px;
+  box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
+  /*background: white;*/
+  position: relative;
+  margin: 0;
+  top: 100px;
+  z-index: 10;
+  background-color: blue;
 }

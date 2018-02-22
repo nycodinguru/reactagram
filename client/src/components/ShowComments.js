@@ -7,18 +7,18 @@ export default class ShowComments extends Component {
 
     this.state = {
       showComments: '',
-      loaded: false
+      loaded: false,
     };
   }
 
   componentDidMount() {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/API/reactagram/comments'
+      url: 'http://localhost:3000/API/reactagram/comments',
     }).then(result => {
       this.setState({
         showComments: result.data,
-        loaded: true
+        loaded: true,
       });
     });
     console.log('=======>', this.state.showComments);
@@ -27,15 +27,17 @@ export default class ShowComments extends Component {
   revealUsers() {
     axios({
       method: 'get',
-      url: `http://localhost:3000/api/reactagram/users/`
+      url: `http://localhost:3000/api/reactagram/users/`,
     });
   }
 
   render() {
-    if (this.props.allUserData === 'notloaded' || this.state.showComments.length === 0) {
+    if (
+      this.props.allUserData === 'notloaded' ||
+      this.state.showComments.length === 0
+    ) {
       return <div className="loading-div" />;
-    } 
-    else {
+    } else {
       const allComments = this.state.showComments.map((comment, key) => {
         var commenterId = comment.u_id;
 
@@ -48,7 +50,7 @@ export default class ShowComments extends Component {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '60px',
-          width: '60px'
+          width: '60px',
         };
 
         return (
@@ -56,7 +58,7 @@ export default class ShowComments extends Component {
             <div>
               <p>{comment.comment_text}</p>
               <p>{posterID.username}</p>
-              <div className="profile_picture" style={styles}></div>
+              <div className="profile_picture" style={styles} />
             </div>
           </div>
         );
@@ -64,9 +66,7 @@ export default class ShowComments extends Component {
 
       return (
         <section>
-          <div id="show-comments-div">
-            {allComments}
-          </div>
+          <div id="show-comments-div">{allComments}</div>
         </section>
       );
     }
