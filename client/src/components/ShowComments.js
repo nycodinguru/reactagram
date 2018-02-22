@@ -5,23 +5,23 @@ export default class ShowComments extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showComments: '',
-      loaded: false
-    };
+    // this.state = {
+    //   showComments: '',
+    //   loaded: false
+    // };
   }
 
   componentDidMount() {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/API/reactagram/comments'
-    }).then(result => {
-      this.setState({
-        showComments: result.data,
-        loaded: true
-      });
-    });
-    console.log('=======>', this.state.showComments);
+    // axios({
+    //   method: 'get',
+    //   url: 'http://localhost:3000/API/reactagram/comments'
+    // }).then(result => {
+    //   this.setState({
+    //     showComments: result.data,
+    //     loaded: true
+    //   });
+    // });
+    console.log('=======>', this.props.showComments);
   }
 
   revealUsers() {
@@ -34,11 +34,11 @@ export default class ShowComments extends Component {
   render() {
     if (
       this.props.allUserData === 'notloaded' ||
-      this.state.showComments.length === 0
+      this.props.showComments.length === 0
     ) {
       return <div className="loading-div" />;
     } else {
-      const allComments = this.state.showComments
+      const allComments = this.props.showComments
         .filter(
           comment => comment.p_id === parseInt(this.props.match.params.id)
         )

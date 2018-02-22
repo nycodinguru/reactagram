@@ -35,10 +35,11 @@ export default class AddComment extends Component {
       .post('http://localhost:3000/api/reactagram/comments', {
         comment_text: this.state.comment,
         u_id: this.props.userID,
-        p_id: this.props.postId,
+        p_id: this.props.postId
       })
       .then(response => {
-        this.setState({ comments: response.data });
+        // this.setState({ comments: response.data });
+        this.props.getAllComments();
         console.log('WHAT IS RESPONSE.DATA?', response.data);
         console.log('comment posted ==>', this.state.comment);
       })
