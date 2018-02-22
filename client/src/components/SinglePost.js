@@ -124,15 +124,16 @@ export default class SinglePost extends Component {
         <div
               className="single-post-image-div"
               style={styles}
-              onMouseOver={
+              onMouseEnter={
                 photo.user_id === this.props.currentUserId
                   ? this.toggleButtons
                   : null
               }
             >{this.state.showButtons ? (
-              <div className="delete-button" onClick={this.deleteHandler}>
-                DELETE
-              </div>
+                <ul className="delete-button" >
+                <li>EDIT <span id="down-arrow">&#9660;</span></li>
+                <li>DELETE</li>
+              </ul>
             ) : (
               ''
             )}</div>

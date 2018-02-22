@@ -441,10 +441,41 @@ nav {
   background-color: skyblue;
   width: 550px;
 }
-.delete-button:hover {
+.delete-button{
+  position: relative;
+  right: -413px;
+  background: rgba(0, 0, 0, .5);
+  text-align: center;
+  top: 12px;
+  border-radius: 15px;
+  color: white;
+  opacity: .6;
+  height: 24px;
+  list-style-type: none;
+  line-height: 25px;
+  width: 59px;
+  padding: 3px 10px;
+  display: inline-block;
+}
+.delete-button li:nth-child(2){
+  display: none;
+  color: white;
+}
+.delete-button:hover li:nth-child(2){
+  display: inline-block;
+  transition: .5s;
   color: red;
-  font-weight: bold;
+}
+.delete-button:hover{
+  display: inline-block;
   cursor: pointer;
+  opacity: 1;
+  display: block;
+  transition: .5s;
+  height: 49px;
+}
+#down-arrow{
+  font-size: 8pt;
 }
 
 /**************************************************/
