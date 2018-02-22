@@ -346,7 +346,6 @@ nav {
 }
 
 .likes-div {
-  background-image: url('https://i.imgur.com/lkJnRud.png');
   background-size: cover;
   background-position: center;
   height: 21px;
@@ -458,26 +457,26 @@ nav {
   background: rgba(0, 0, 0, .5);
   text-align: center;
   top: 0px;
-  border-radius: 15px;
+  border-radius: 23px;
   color: white;
   opacity: .6;
-  height: 24px;
+  height: 38px;
+  width: 23px;
   list-style-type: none;
   line-height: 25px;
-  width: 18px;
-  height: 28px;
   padding: 3px 10px;
   display: inline-block;
 }
 .delete-button li:nth-child(2){
   display: none;
   color: white;
+  opacity: 0;
 }
 .delete-button:hover li:nth-child(2){
   display: inline-block;
-  transition: .5s;
   color: red;
   cursor: pointer;
+  opacity: 1;
 }
 .delete-button ul{
   display: inline-block;
@@ -493,6 +492,7 @@ nav {
   height: 69px;
   cursor: default;
   top: 0px;
+  line-height: 4em;
 }
 #down-arrow{
   font-size: 8pt;
@@ -504,8 +504,8 @@ nav {
   height: 25px;
   width: 25px;
   position: relative;
-  left: -3px;
-  top: 1px;
+  left: -1px;
+  top: 6px;
 }
 .delete-button-icon{
   background: url('./images/delete.png');
@@ -514,8 +514,8 @@ nav {
   height: 25px;
   width: 25px;
   position: relative;
-  left: -3px;
-  top: 1px;
+  left: -1px;
+  top: 3px;
 }
 /**************************************************/
 /***************** CREATE POST PAGE ***************/
