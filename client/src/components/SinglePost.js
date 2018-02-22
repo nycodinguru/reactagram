@@ -131,8 +131,8 @@ export default class SinglePost extends Component {
               }
             >{this.state.showButtons ? (
                 <ul className="delete-button" >
-                <li>EDIT <span id="down-arrow">&#9660;</span></li>
-                <li>DELETE</li>
+                <li className="edit-button-icon"></li>
+                <li className="delete-button-icon"></li>
               </ul>
             ) : (
               ''
