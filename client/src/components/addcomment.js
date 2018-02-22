@@ -4,14 +4,15 @@ import axios from 'axios';
 export default class AddComment extends Component {
   constructor(props) {
     super(props);
-    this.state = { comment: '', comments: '' };
+    this.state = { comment: '', comments: '', isMounted: false };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
+    this.setState({ isMounted: true });
     console.log('PROPS ==>', this.props);
-    console.log('PROPS ==>');
+
     axios
       .get('http://localhost:3000/api/reactagram/comments')
       .then(response => {
@@ -25,18 +26,20 @@ export default class AddComment extends Component {
 
   handleChange(event) {
     this.setState({ comment: event.target.value });
-    console.log('STATE OF COMMENT is ===>', this.state.comment);
+    // console.log('STATE OF COMMENT is ===>', this.state.comment);
   }
   handleSubmit(event) {
     // console.log('submit handles');
+    event.preventDefault();
     axios
       .post('http://localhost:3000/api/reactagram/comments', {
         comment_text: this.state.comment,
-        u_id: 1,
-        p_id: 1,
+        u_id: this.props.userID,
+        p_id: this.props.postId,
       })
       .then(response => {
         this.setState({ comments: response.data });
+        console.log('WHAT IS RESPONSE.DATA?', response.data);
         console.log('comment posted ==>', this.state.comment);
       })
       .catch(err => {
@@ -44,10 +47,9 @@ export default class AddComment extends Component {
       });
   }
 
-  render() {
-    return (
-      <div className="comment-form-component">
-        <div />
+  shouldRender() {
+    if (this.state.isMounted) {
+      return (
         <form onSubmit={this.handleSubmit}>
           <label>
             Comment:
@@ -55,7 +57,13 @@ export default class AddComment extends Component {
           </label>
           <button type="submit">add comment</button>
         </form>
-      </div>
-    );
+      );
+    } else {
+      return <p>...</p>;
+    }
+  }
+
+  render() {
+    return <div className="comment-form-component">{this.shouldRender()}</div>;
   }
 }
