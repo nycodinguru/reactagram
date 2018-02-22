@@ -29,8 +29,21 @@ class App extends Component {
       id: 1,
       allUserData: 'notloaded',
       userData: null,
-      postsData: []
+      postsData: '',
+      likeData: []
     };
+  }
+
+  grabLikes(){
+
+    const userid = this.state.userData.id
+
+    axios({
+      url: `http://localhost:3000/api/reactagram/alluserlikes/${userid}`,
+      method: 'get'
+    }).then(response => {
+      this.setState({ likeData: response.data})
+    })
   }
 
   grabUserObj() {
@@ -39,7 +52,7 @@ class App extends Component {
       method: 'get'
     }).then(response => {
       // console.log('grabUserObj: ', response.data);
-      this.setState({ userData: response.data });
+      this.setState({ userData: response.data }, this.grabLikes);
     });
   }
 
@@ -153,6 +166,7 @@ class App extends Component {
             <Route
               path="/reactagram/posts/:id"
               render={props => {
+                if(!this.state.userData) return <div className="loading-div" />;   
                 return (
                   <div>
                     <NavBar {...props} user={this.state.userData} />
@@ -162,6 +176,7 @@ class App extends Component {
                       users={this.state.allUserData}
                       postsData={this.state.postsData}
                       currentUserId={this.state.id}
+                      userLikes={this.state.likeData}
                     />
 
                     <CommentContainer

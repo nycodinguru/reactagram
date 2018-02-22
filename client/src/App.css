@@ -356,6 +356,17 @@ nav {
   cursor: pointer;
 }
 
+.liked-div {
+  background-image: url('https://i.imgur.com/FmAhLu9.png');
+  background-size: cover;
+  background-position: center;
+  height: 21px;
+  width: 20px;
+  display: inline-block;
+  padding-left: 2px;
+  cursor: pointer;
+}
+
 .likes-div p {
   font-size: 15pt;
   margin: 0 0 0 31px;

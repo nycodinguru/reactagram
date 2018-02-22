@@ -94,7 +94,7 @@ export default class SinglePost extends Component {
   }
 
   render() {
-    if (this.props.users === 'notloaded' || this.props.postsData.length === 0) {
+    if (this.props.userLikes.length === 0) {
       return <div className="loading-div" />;
     } else {
       const photo = this.props.postsData.find(i => {
@@ -102,25 +102,32 @@ export default class SinglePost extends Component {
       });
 
       const posterID = this.props.users.find(user => {
-        return Number(user.id) === photo.user_id;
-      });
 
-      var profilePic = {
-        background: `url('${posterID.profile_picture}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      };
+        return Number(user.id) === photo.user_id})
 
-      var styles = {
-        background: `url('${photo.image_link}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      };
+      var profilePic = {background: `url('${posterID.profile_picture}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  };
 
-      return (
-        <div className="single-post-parent-div">
-          <div className="single-post-container-div">
-            <div
+                  console.log("string", this.props.userLikes)
+
+      const likedPost = this.props.userLikes.filter( i => {
+          console.log(i.postid, photo.id)
+          if (i.postid === Number(photo.id)){ return true }
+          else { return false }
+      })
+    
+
+      var styles = {background: `url('${photo.image_link}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  };
+
+    return(
+      <div className="single-post-parent-div">
+       <div className="single-post-container-div">
+        <div
               className="single-post-image-div"
               style={styles}
               onMouseEnter={
@@ -145,9 +152,7 @@ export default class SinglePost extends Component {
             </div>
             <div className="likes-and-comments">
               {' '}
-              <div className="likes-div" onClick={this.likeHandler}>
-                <p>{photo.total_likes}</p>
-              </div>
+              <div className={likedPost.length > 0 ? Number(photo.id) === likedPost[0].postid ? "liked-div" : "likes-div" : "likes-div"} onClick={this.likeHandler}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
               <div className="comments-div">
                 <p />
               </div>
@@ -158,7 +163,8 @@ export default class SinglePost extends Component {
               <p className="post-username">{posterID.username}</p>
             </div>
           </div>
-        </div>
+          </div>
+
       );
     }
   }

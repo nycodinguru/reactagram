@@ -73,13 +73,12 @@ Reactagram.destroy = (req, res, next) => {
     });
 };
 
-Reactagram.isLiked = (req, res, next) => {
+Reactagram.allUserLikes = (req, res, next) => {
   db
-    .oneOrNone(
-      'SELECT is_liked FROM user_likes WHERE is_liked = true AND postid = $1 AND userid = $2;', [req.body.postid, req.body.userid]
-    )
-    .then(isLiked => {
-      res.locals.isLiked = isLiked;
+    .any(
+      'SELECT * FROM user_likes WHERE is_liked = true AND userid = $1;', [req.params.id])
+    .then(allUserLikes => {
+      res.locals.allUserLikes = allUserLikes;
       next();
     })
     .catch(err => console.log(err));
