@@ -102,35 +102,39 @@ export default class SinglePost extends Component {
       });
 
       const posterID = this.props.users.find(user => {
+        return Number(user.id) === photo.user_id;
+      });
 
-        return Number(user.id) === photo.user_id})
+      var profilePic = {
+        background: `url('${posterID.profile_picture}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      };
 
-      var profilePic = {background: `url('${posterID.profile_picture}')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  };
+      console.log('string', this.props.userLikes);
 
-                  console.log("string", this.props.userLikes)
+      const likedPost = this.props.userLikes.filter(i => {
+        console.log(i.postid, photo.id);
+        if (i.postid === Number(photo.id)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
 
-      const likedPost = this.props.userLikes.filter( i => {
-          console.log(i.postid, photo.id)
-          if (i.postid === Number(photo.id)){ return true }
-          else { return false }
-      })
-    
+      var styles = {
+        background: `url('${photo.image_link}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      };
 
-      var styles = {background: `url('${photo.image_link}')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  };
-
-    return(
-      <div className="single-post-parent-div">
-       <div className="single-post-container-div">
-        <div
+      return (
+        <div className="single-post-parent-div">
+          <div className="single-post-container-div">
+            <div
               className="single-post-image-div"
               style={styles}
-              onMouseEnter={
+              onMouseOver={
                 photo.user_id === this.props.currentUserId
                   ? this.toggleButtons
                   : null
@@ -152,7 +156,21 @@ export default class SinglePost extends Component {
             </div>
             <div className="likes-and-comments">
               {' '}
-              <div className={likedPost.length > 0 ? Number(photo.id) === likedPost[0].postid ? "liked-div" : "likes-div" : "likes-div"} onClick={this.likeHandler}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
+              <div
+                className={
+                  likedPost.length > 0
+                    ? Number(photo.id) === likedPost[0].postid
+                      ? 'liked-div'
+                      : 'likes-div'
+                    : 'likes-div'
+                }
+                onClick={this.likeHandler}
+              >
+                <p>{photo.total_likes}</p>
+              </div>
+              <div className="comments-div">
+                <p />
+              </div>
               <div className="comments-div">
                 <p />
               </div>
@@ -163,8 +181,7 @@ export default class SinglePost extends Component {
               <p className="post-username">{posterID.username}</p>
             </div>
           </div>
-          </div>
-
+        </div>
       );
     }
   }
