@@ -30,6 +30,7 @@ export default class AddComment extends Component {
   }
   handleSubmit(event) {
     // console.log('submit handles');
+    event.preventDefault();
     axios
       .post('http://localhost:3000/api/reactagram/comments', {
         comment_text: this.state.comment,
@@ -38,6 +39,7 @@ export default class AddComment extends Component {
       })
       .then(response => {
         this.setState({ comments: response.data });
+        console.log('WHAT IS RESPONSE.DATA?', response.data);
         console.log('comment posted ==>', this.state.comment);
       })
       .catch(err => {

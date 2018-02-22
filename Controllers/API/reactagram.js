@@ -11,7 +11,7 @@ router.get('/posts', Reactagram.allPosts, (req, res) => {
 router.get('/users', Reactagram.allUsers, (req, res) => {
   const allUsers = res.locals.users;
   res.json(allUsers);
-})
+});
 
 router.get('/users/:id', Reactagram.user, (req, res) => {
   const userObj = res.locals.user;
@@ -29,7 +29,7 @@ router.get('/users', Reactagram.allUsers, (req, res) => {
 });
 
 router.post('/comments', Reactagram.createComment, (req, res) => {
-  const commentObj = res.locals.newcomment;
+  const commentObj = res.locals.comment;
   res.json(commentObj);
 });
 
