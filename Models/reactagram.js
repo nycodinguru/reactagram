@@ -76,7 +76,7 @@ Reactagram.destroy = (req, res, next) => {
 Reactagram.isLiked = (req, res, next) => {
   db
     .oneOrNone(
-      'SELECT is_liked FROM user_likes WHERE is_liked = true AND postid = 5 AND userid = 1;',
+      'SELECT is_liked FROM user_likes WHERE is_liked = true AND postid = $1 AND userid = $2;', [req.body.postid, req.body.userid]
     )
     .then(isLiked => {
       res.locals.isLiked = isLiked;

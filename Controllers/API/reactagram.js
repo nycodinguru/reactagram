@@ -43,6 +43,11 @@ router.delete('/posts/:id', Reactagram.destroy, (req, res) => {
   res.json(delPostObj);
 });
 
+router.get('/isliked', Reactagram.isliked, (req, res) => {
+  const isLiked = res.locals.isliked;
+  res.json(isLiked);
+});
+
 router.post('/likes', Reactagram.like, (req, res) => {
   const like = res.locals.like;
   res.json(like);

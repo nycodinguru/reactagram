@@ -25,26 +25,26 @@ export default class SinglePost extends Component {
     });
 
     axios({
-      url: `http://localhost:3000/api/reactagram/users/${posterProfile.user_id}`,
-      method: 'get'
+      url: `http://localhost:3000/api/reactagram/users/${
+        posterProfile.user_id
+      }`,
+      method: 'get',
     }).then(response => {
       console.log("poster's profile found", response.data);
       this.setState({
         poster: response.data,
-        loaded: true
+        loaded: true,
       });
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.scrollTo(0, 0);
   }
-
 
   likeHandler() {
     const user_id = this.props.user.id;
     const postid = this.props.match.params.id;
-
 
     this.setState({
       user_id: [user_id],
@@ -62,14 +62,14 @@ export default class SinglePost extends Component {
 
     const newLikeData = {
       is_liked: [is_liked],
-      user_id: [user_id],
+      userid: [user_id],
       postid: [postid]
     };
 
     axios({
       url: `http://localhost:3000/api/reactagram/likes/`,
       method: 'post',
-      data: newLikeData
+      data: newLikeData,
     }).then(response => {
       this.setState({ is_liked: true });
     });
@@ -146,5 +146,4 @@ export default class SinglePost extends Component {
          </div>
     )}
   }
-
 }

@@ -88,7 +88,6 @@ nav {
   margin: 24vh auto 0 auto;
 }
 
-
 /**************************************************/
 /*************** SHOW COMMENTS PAGE ***************/
 /**************************************************/
@@ -195,7 +194,6 @@ nav {
   font-weight: lighter;
 }
 
-
 /**************************************************/
 /****************** PROFILE PAGE ******************/
 /**************************************************/
@@ -227,15 +225,13 @@ nav {
   float: right;
 }
 
-#profile-info-div 
-.user-name,
+#profile-info-div .user-name,
 .user-email {
   padding-left: 100px;
   margin: 10px 0;
 }
 
-#profile-info-div
-.user-name {
+#profile-info-div .user-name {
   font-size: 34px;
   font-weight: lighter;
   float: left;
@@ -263,7 +259,6 @@ nav {
 
 /***** MEDIA QUERY FOR PROFILE PAGE *****/
 @media screen and (max-width: 700px) {
-
   #profile-page {
     padding-top: 0px;
   }
@@ -286,14 +281,12 @@ nav {
     height: 100px;
   }
 
-  #profile-info-div 
-  .user-name,
+  #profile-info-div .user-name,
   .user-email {
     padding-left: 30px;
   }
 
-  #profile-info-div
-  .user-name {
+  #profile-info-div .user-name {
     font-size: 25px;
   }
 
@@ -314,14 +307,13 @@ nav {
   #profile-posts-section {
     margin-top: 30px;
   }
-
 }
 
 /**************************************************/
 /***************** SINGLE POST PAGE ***************/
 /**************************************************/
 
-.single-post-parent-div{
+.single-post-parent-div {
   width: 500px;
   height: 700px;
   position: relative;
@@ -402,14 +394,14 @@ nav {
   line-height: 55px;
   z-index: 10;
 }
-.landing-page-backdrop{
+.landing-page-backdrop {
   position: relative;
   top: -700px;
   z-index: 2;
   filter: blur(6px);
-  opacity: .4;
+  opacity: 0.4;
 }
-.return-home-div{
+.return-home-div {
   position: absolute;
   top: -43px;
   width: 100vw;
@@ -417,6 +409,7 @@ nav {
   height: 100%;
   z-index: 3;
 }
+
 
 /*@media screen and (max-width: 414px) {
   
@@ -442,7 +435,6 @@ nav {
 /**************************************************/
 
 #show-comments-section {
-  
 }
 
 #show-comments-div {
@@ -498,6 +490,9 @@ nav {
   width: 136px;
 }
 
+.create-form-component {
+  margin-top: 200px;
+}
 /**************************************************/
 /****************** CREATE COMMENT PAGE ***********/
 /**************************************************/
