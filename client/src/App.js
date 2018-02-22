@@ -15,7 +15,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Profile from './components/Profile';
 import SinglePost from './components/SinglePost';
-import AddComment from './components/AddComment';
+import AddComment from './components/AddComments';
 import ShowComments from './components/ShowComments';
 import CreatePost from './components/CreatePost';
 import NewPostIcon from './components/NewPostIcon';

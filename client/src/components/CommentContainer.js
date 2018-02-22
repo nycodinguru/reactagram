@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddComment from './AddComment';
+import AddComment from './AddComments';
 import ShowComments from './ShowComments';
 
 class CommentContainer extends Component {
