@@ -29,7 +29,7 @@ class App extends Component {
       id: 1,
       allUserData: 'notloaded',
       userData: null,
-      postsData: '',
+      postsData: []
     };
   }
 
@@ -190,7 +190,6 @@ class App extends Component {
                 return (
                   <div>
                     <NavBar {...props} user={this.state.userData} />
-                    
                   </div>
                 );
               }}

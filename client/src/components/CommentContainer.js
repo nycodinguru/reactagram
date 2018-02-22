@@ -22,8 +22,11 @@ class CommentContainer extends Component {
         </div>
 
         <div>
-          <ShowComments allUserData={this.props.users} />
-          Sup!
+          <ShowComments
+            allUserData={this.props.users}
+            match={this.props.match}
+          />
+          } Sup!
         </div>
       </div>
     );
