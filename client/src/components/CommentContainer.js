@@ -8,7 +8,7 @@ class CommentContainer extends Component {
   }
 
   render() {
-    console.log('this is props in comment container=>', this.props);
+    //console.log('this is props in comment container=>', this.props);
     return (
       <div className="comment-container">
         <div>

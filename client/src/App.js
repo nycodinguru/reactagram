@@ -30,7 +30,20 @@ class App extends Component {
       allUserData: 'notloaded',
       userData: null,
       postsData: '',
+      likeData: null
     };
+  }
+
+  grabLikes(){
+
+    const userid = this.state.userData.id
+
+    axios({
+      url: `http://localhost:3000/api/reactagram/alluserlikes/${userid}`,
+      method: 'get'
+    }).then(response => {
+      this.setState({ likeData: response.data})
+    })
   }
 
   grabUserObj() {
@@ -39,7 +52,8 @@ class App extends Component {
       method: 'get'
     }).then(response => {
       // console.log('grabUserObj: ', response.data);
-      this.setState({ userData: response.data });
+      this.setState({ userData: response.data }),
+      this.grabLikes();
     });
   }
 
@@ -162,6 +176,7 @@ class App extends Component {
                       users={this.state.allUserData}
                       postsData={this.state.postsData}
                       currentUserId={this.state.id}
+                      userLikes={this.state.likeData}
                     />
 
                     <CommentContainer

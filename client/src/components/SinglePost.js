@@ -97,7 +97,7 @@ export default class SinglePost extends Component {
   }
 
   render() {
-    if (this.props.users === 'notloaded' || this.props.postsData.length === 0) {
+    if (this.props.userLikes === null || this.props.postsData.length === 0) {
       return <div className="loading-div" />;
     } else {
       const photo = this.props.postsData.find(i => {
@@ -111,6 +111,14 @@ export default class SinglePost extends Component {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   };
+
+      const likedPost = this.props.userLikes.filter( i => {
+          console.log(i.postid, photo.id)
+          if (i.postid === Number(photo.id)){ return i }
+          else { return false }
+      })
+
+      console.log(likedPost[0].postid)
     
 
       var styles = {background: `url('${photo.image_link}')`,
@@ -137,7 +145,7 @@ export default class SinglePost extends Component {
             ) : (
               ''
             )}</div>
-            <div className="likes-and-comments"> <div className="likes-div" onClick={this.likeHandler}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
+            <div className="likes-and-comments"> <div className={Number(photo.id) === likedPost[0].postid ? "liked-div" : "likes-div"} onClick={this.likeHandler}><p>{photo.total_likes}</p></div><div className="comments-div"><p></p></div>
           <p className="caption-text">{photo.caption}</p> 
         </div>
         <div className="poster-info">
