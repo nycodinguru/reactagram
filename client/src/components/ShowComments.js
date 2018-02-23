@@ -59,10 +59,12 @@ export default class ShowComments extends Component {
 
           return (
             <div key={key}>
-              <div>
-                <p>{comment.comment_text}</p>
-                <p>{posterID.username}</p>
+              <div className="commenter-info">
                 <div className="profile_picture" style={styles} />
+                <p>{posterID.username}</p>
+              </div>
+              <div className="commenter-comment">
+                <p>{comment.comment_text}</p>
               </div>
             </div>
           );

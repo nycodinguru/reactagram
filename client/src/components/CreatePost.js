@@ -96,23 +96,23 @@ export default class CreatePost extends Component {
 
   render() {
     return (
-      <div className="create-form-component">
-        <div />
+      <section className="create-form-component">
+        <div className="form-div">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              {/*<p>Image</p>*/}
+              <input type="text" name="image_link" onChange={this.handleChange} placeholder="Image URL"/>
+            </label>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Image:
-            <input type="text" name="image_link" onChange={this.handleChange} />
-          </label>
+            <label>
+              <p>Caption</p>
+              <textarea type="text" name="caption" onChange={this.handleChange} />
+            </label>
 
-          <label>
-            Caption:
-            <input type="text" name="caption" onChange={this.handleChange} />
-          </label>
-
-          <button type="submit">add comment</button>
-        </form>
-      </div>
+            <button type="submit">add comment</button>
+          </form>
+        </div>
+      </section>
     );
   }
 }

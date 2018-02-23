@@ -416,7 +416,7 @@ nav {
   width: 100vw;
   padding-bottom: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 2;
 }
 
 
@@ -445,10 +445,12 @@ nav {
 
 #show-comments-section {
   margin-top: 50px !important;
+  display: flex;
+  justify-content: center;
 }
 
 #show-comments-div {
-  background-color: skyblue;
+  background-color: white;
   width: 550px;
 }
 .delete-button{
@@ -520,6 +522,7 @@ nav {
 /**************************************************/
 /***************** CREATE POST PAGE ***************/
 /**************************************************/
+
 /*//remove when styling begins*/
 /*.post-form-component {
   margin-top: 300px;
@@ -530,7 +533,7 @@ nav {
   font-weight: normal;
   font-size: 20pt;
   transition: 0.4s;
-}*/
+}
 .new-post:hover {
   transition: 0.4s;
   background: rgba(37, 179, 155, 1);
@@ -559,10 +562,50 @@ nav {
   font-weight: lighter;
   width: 136px;
 }
+*/
 
 .create-form-component {
-  margin-top: 200px;
+  display: flex;
+  justify-content: center;
 }
+
+.form-div {
+  width: 500px;
+  height: 350px;
+  margin-top: 100px;
+}
+
+.create-form-component input {
+  margin-left: 10%;
+  width: 80%;
+  height: 30px;
+  font-size: 14px;
+  text-indent: 3px;
+}
+
+.create-form-component textarea {
+  margin-left: 10%;
+  width: 80%;
+  height: 200px;
+  font-size: 14px;
+  padding: 3px;
+  resize: none;
+}
+
+.create-form-component p {
+  margin: 30px 0 5px 10%;
+}
+
+.create-form-component button {
+  margin: 30px 0 0 10%;
+  width: 120px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: lighter;
+  background-color: white;
+  border-radius: 3px;
+}
+
 /**************************************************/
 /**************** ADD COMMENT COMPONENT ***********/
 /**************************************************/
@@ -573,13 +616,14 @@ nav {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
-  background-color: red;
+  background-color: white;
   z-index: 100
 }
 
 .addComment-div {
   display: flex;
   justify-content: center;
+  font-size: 20px;
 }
 
 .show-comments-div {
@@ -600,5 +644,30 @@ nav {
   height: 28px;
   font-size: 14px;
   margin-left: 10px;
+  border-radius: 3px;
+  background-color: white;
 }
 
+.profile_picture {
+  border-radius: 30px;
+  float: left;
+  margin: 10px 10px 5px 10px;
+}
+
+.commenter-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100px;
+  float: left;
+}
+
+.commenter-info p {
+  display: inline-block;
+  margin: 0;
+}
+
+.commenter-comment {
+  width: 430px;
+  float: right;
+}
