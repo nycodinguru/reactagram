@@ -27,6 +27,7 @@ Through artistic/stylized photosharing they can indulge in glamor and present th
 - Styling 
 - Routing 
 
+
 2. Likes features 
 - Icon 
 - PUT request toggling between true and false 
@@ -74,4 +75,4 @@ Good
 
 
 ### Website address for the REACTAGRAM 
-[REACTAGRAM](http://)
+[Imgur](https://i.imgur.com/6WPyY2Q.png)

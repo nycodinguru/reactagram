@@ -20,6 +20,7 @@ import ShowComments from './components/ShowComments';
 import CreatePost from './components/CreatePost';
 import NewPostIcon from './components/NewPostIcon';
 import CommentContainer from './components/CommentContainer';
+import Footer from './components/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -154,6 +155,7 @@ class App extends Component {
                       users={this.state.allUserData}
                     />
                     <NewPostIcon {...props} />
+                    <Footer />
                   </div>
                 );
               }}

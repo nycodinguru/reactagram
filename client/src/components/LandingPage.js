@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import likedImage from '../images/liked.png';
+import unlike from '../images/likes.png';
 
 export default class LandingPage extends Component {
     constructor(props) {
@@ -16,6 +18,7 @@ export default class LandingPage extends Component {
 
     likeClicked() {
         console.log('like is clicked');
+        
     }
 
     render() {
@@ -42,7 +45,6 @@ export default class LandingPage extends Component {
                 // console.log("what are you: ",post_user)
 
                 const likedPost = this.props.userLikes.filter(i => {
-    
                     if (i.postid === Number(el.id)) {
                     return true;
                     }           else {
@@ -50,17 +52,17 @@ export default class LandingPage extends Component {
                     }
                 });
 
-                console.log(likedPost)
+                // console.log(likedPost)
 
-                var liked =  {background: `url('./images/liked.png')`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat'
-                  };
+                // var liked = {backgroundImage: "url('./images/liked.png')",
+                //             backgroundSize: 'contain',
+                //             backgroundRepeat: 'no-repeat',
+                //   };
 
-                var  like =  {background: `url('./images/likes.png')`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat'
-                  };
+                // var  like = {background: "url('./images/likes.png')",
+                //             backgroundSize: 'contain',
+                //             backgroundRepeat: 'no-repeat'
+                //   };
 
                 return (
                     <div key={el.id} className="post-div">
@@ -73,17 +75,22 @@ export default class LandingPage extends Component {
                             <p className="user-name">{posterID.username}</p>
                         </div>
 
-           <Link to={`/reactagram/posts/${el.id}`}>
+                        <Link to={`/reactagram/posts/${el.id}`}>
                             {/* WHEN USER CLICKS ON THE IMAGE, IT LEADS THE USER TO THE SINGLE POST PAGE*/}
                             <div className="post-photos" style={styles} />
                         </Link>
 
                         <div>
                             <div className="button-div">
-                                <div
+                                {/*<div
                                     className="like-button" style={likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? liked : like : like} 
                                     onClick={this.likeClicked}
-                                />
+                                />*/}
+
+                                <img className="like-button" src={likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? likedImage : unlike : unlike} 
+                                    onClick={this.likeClicked}
+                                     />
+
                                 <div className="like-count">
                                     {el.total_likes}
                                 </div>
