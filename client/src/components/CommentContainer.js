@@ -35,7 +35,7 @@ class CommentContainer extends Component {
     //console.log('this is props in comment container=>', this.props);
     return (
       <div className="comment-container">
-        <div>
+        <div className="addComment-div">
           <AddComment
             postData={this.props.posts}
             allUserData={this.props.users}
@@ -43,7 +43,6 @@ class CommentContainer extends Component {
             postId={this.props.match.params.id}
             getAllComments={this.getAllComments}
           />
-          Hi!
         </div>
 
         <div>

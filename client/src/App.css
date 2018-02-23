@@ -407,7 +407,7 @@ nav {
 }
 .landing-page-backdrop {
   position: relative;
-  top: -700px;
+  top: -1000px;
   z-index: 2;
   filter: blur(6px);
   opacity: 0.4;
@@ -442,10 +442,11 @@ nav {
 
 
 /**************************************************/
-/*************** SHOW COMMENTS PAGE ***************/
+/************ SHOW COMMENTS COMPONENT *************/
 /**************************************************/
 
 #show-comments-section {
+  margin-top: 50px !important;
 }
 
 #show-comments-div {
@@ -521,7 +522,7 @@ nav {
 /***************** CREATE POST PAGE ***************/
 /**************************************************/
 /*//remove when styling begins*/
-.post-form-component {
+/*.post-form-component {
   margin-top: 300px;
   box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.4);
   text-align: center;
@@ -530,7 +531,7 @@ nav {
   font-weight: normal;
   font-size: 20pt;
   transition: 0.4s;
-}
+}*/
 .new-post:hover {
   transition: 0.4s;
   background: rgba(37, 179, 155, 1);
@@ -564,34 +565,41 @@ nav {
   margin-top: 200px;
 }
 /**************************************************/
-/****************** CREATE COMMENT PAGE ***********/
+/**************** ADD COMMENT COMPONENT ***********/
 /**************************************************/
-/*//remove when styling begins*/
+
 .comment-container {
+  width: 700px;
   margin-top: 200px;
-  /*height: 200px;
-  width: 400px;*/
-  height: 700px;
-  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
-  /*background: white;*/
-  position: relative;
-  margin: 0;
-  top: 100px;
-  z-index: 10;
   background-color: red;
+  z-index: 100
 }
+
+.addComment-div {
+  display: flex;
+  justify-content: center;
+}
+
 .show-comments-div {
   margin-top: 200px;
-  /*height: 200px;
-  width: 400px;*/
-  height: 700px;
-  width: 500px;
+  height: 200px;
+  width: 100%;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
-  /*background: white;*/
-  position: relative;
-  margin: 0;
-  top: 100px;
-  z-index: 10;
   background-color: blue;
 }
+
+.comment-input {
+  width: 300px;
+  height: 25px;
+}
+
+.add-comment-button {
+  width: 120px;
+  height: 28px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
