@@ -18,7 +18,6 @@ export default class LandingPage extends Component {
 
     likeClicked() {
         console.log('like is clicked');
-        
     }
 
     render() {
