@@ -81,12 +81,7 @@ Through artistic/stylized photosharing they can indulge in glamor and present th
 ![Comment Page](./client/src/images/comment.png)
 
 
-### E. Were there ay particular pain points or unsolved problems you had to manage? (e.g. technological, timing, content, etc.)
-
-
-
-
-### F. Lessons Learned
+### E. Lessons Learned
 
 ##### 1. Don't sleep on SQL
 If we had been stronger at SQL instead of doing so much front-end work and having so many models we could have used sql to select, join,  data with complex specifications.
@@ -102,7 +97,7 @@ Be receptive  to  feedback and  self-aware  of our  strengths & weaknesses
 Maintain  good communication and offer/ask for help
 
 
-### G. Lists of the technologies used 
+### F. Lists of the technologies used 
 
 - JavaScript 
 - React.js
