@@ -31,7 +31,7 @@ export default class LandingPage extends Component {
                 var styles = {
                     background: `url('${el.image_link}')`,
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'center'
                 };
 
                 // IF USER_ID IN POSTS TABLE IS === TO ID IN USERS, DISPLAY PROFILE PICTURE AND USER NAME FROM USERS TABLE
@@ -42,25 +42,26 @@ export default class LandingPage extends Component {
                 // console.log("what are you: ",post_user)
 
                 const likedPost = this.props.userLikes.filter(i => {
-    
                     if (i.postid === Number(el.id)) {
-                    return true;
-                    }           else {
-                    return false;
+                        return true;
+                    } else {
+                        return false;
                     }
                 });
 
-                console.log(likedPost)
+                console.log(likedPost);
 
-                var liked =  {background: `url('./images/liked.png')`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat'
-                  };
+                var liked = {
+                    background: `url('./images/liked.png')`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat'
+                };
 
-                var  like =  {background: `url('./images/likes.png')`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat'
-                  };
+                var like = {
+                    background: `url('./images/likes.png')`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat'
+                };
 
                 return (
                     <div key={el.id} className="post-div">
@@ -73,7 +74,7 @@ export default class LandingPage extends Component {
                             <p className="user-name">{posterID.username}</p>
                         </div>
 
-           <Link to={`/reactagram/posts/${el.id}`}>
+                        <Link to={`/reactagram/posts/${el.id}`}>
                             {/* WHEN USER CLICKS ON THE IMAGE, IT LEADS THE USER TO THE SINGLE POST PAGE*/}
                             <div className="post-photos" style={styles} />
                         </Link>
@@ -81,13 +82,27 @@ export default class LandingPage extends Component {
                         <div>
                             <div className="button-div">
                                 <div
-                                    className="like-button" style={likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? liked : like : like} 
+                                    className="like-button"
+                                    style={
+                                        likedPost.length > 0
+                                            ? Number(el.id) ===
+                                              likedPost[0].postid
+                                              ? liked
+                                              : like
+                                            : like
+                                    }
                                     onClick={this.likeClicked}
                                 />
                                 <div className="like-count">
                                     {el.total_likes}
                                 </div>
                                 <div className="comment-button" />
+                                {
+                                    this.props.totalComments.filter(
+                                        comment =>
+                                            comment.p_id === parseInt(el.id)
+                                    ).length
+                                }
                             </div>
                             <p className="post-caption">{el.caption}</p>
                         </div>

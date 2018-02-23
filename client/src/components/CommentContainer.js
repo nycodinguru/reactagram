@@ -13,25 +13,9 @@ class CommentContainer extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.getAllComments();
-  // }
-
-  // getAllComments() {
-  //   axios({
-  //     method: 'get',
-  //     url: 'http://localhost:3000/API/reactagram/comments'
-  //   }).then(result => {
-  //     this.setState({
-  //       showComments: result.data,
-  //       loaded: true
-  //     });
-  //   });
-  // }
-
   render() {
-    console.log('this is props in comment container ===> gr', this.props);
-    console.log('length. show state===> gr', this.state.showComments.length);
+    // console.log('this is props in comment container ===> gr', this.props);
+    // console.log('length. show state===> gr', this.state.showComments.length);
     return (
       <div className="comment-container">
         <div className="addComment-div">

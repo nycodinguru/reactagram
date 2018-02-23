@@ -143,6 +143,8 @@ class App extends Component {
               exact
               path="/reactagram"
               render={props => {
+                let totalComments = this.state.showComments;
+                console.log('total comments gr ==>', this.state.showComments);
                 return (
                   <div id="landingPage">
                     <NavBar {...props} user={this.state.userData} />
@@ -151,6 +153,7 @@ class App extends Component {
                       userLikes={this.state.likeData}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
+                      totalComments={totalComments}
                     />
                     <NewPostIcon {...props} />
                   </div>
