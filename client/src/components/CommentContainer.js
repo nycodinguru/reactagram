@@ -50,7 +50,6 @@ class CommentContainer extends Component {
             match={this.props.match}
             showComments={this.props.showComments}
           />
-          } Sup!
         </div>
       </div>
     );

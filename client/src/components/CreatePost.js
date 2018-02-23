@@ -27,6 +27,8 @@ export default class CreatePost extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.updatePreview = this.updatePreview.bind(this)
   }
 
   componentDidMount() {
@@ -53,17 +55,28 @@ export default class CreatePost extends Component {
   }
 
   handleChange(event) {
+
+    //var imagelink = event.target.value
+
     event.preventDefault();
 
     console.log('event.target.name', event.target.name);
 
     let key = event.target.name;
 
-    this.setState({ [key]: event.target.value });
+    this.setState({ [key]: event.target.value }, this.updatePreview);
+    
 
     // this.setState({ `${event.target.name}`: event.target.value });
 
     // console.log(`STATE OF ${event.target.name} ===>`, event.target.value);
+  }
+
+  updatePreview(){
+
+    const previewDiv = document.getElementsByClassName('image-preview');
+
+    previewDiv[0].setAttribute('style', `background: url('${this.state.image_link}'); background-size: cover; background-position: center`)
   }
 
   handleSubmit(event) {
@@ -96,24 +109,24 @@ export default class CreatePost extends Component {
 
   render() {
     return (
-      <div className="create-form-component">
-        <div />
-        <div className="new-post-div">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Image:
-            <input type="text" name="image_link" onChange={this.handleChange} />
-          </label>
+      <section className="create-form-component">
+        <div className="form-div">
+            <div className="image-preview"></div>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              {/*<p>Image</p>*/}
+              <input type="text" name="image_link" onChange={this.handleChange} placeholder="Image URL"/>
+            </label>
 
-          <label>
-            Caption:
-            <input type="text" name="caption" onChange={this.handleChange} />
-          </label>
+            <label>
+              <p>Caption</p>
+              <textarea type="text" name="caption" onChange={this.handleChange} />
+            </label>
 
-          <button type="submit">add comment</button>
-        </form>
+            <button type="submit">add comment</button>
+          </form>
         </div>
-      </div>
+      </section>
     );
   }
 }
