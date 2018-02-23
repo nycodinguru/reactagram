@@ -205,7 +205,13 @@ class App extends Component {
                       totalComments={totalComments}
                     />
 
-                    <CommentContainer
+                    <LandingPageBackdrop
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                    />
+                      <div className="comments-parent">
+                      <CommentContainer
                       {...props}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
@@ -213,12 +219,7 @@ class App extends Component {
                       showComments={this.state.showComments}
                       getAllComments={this.getAllComments}
                     />
-
-                    <LandingPageBackdrop
-                      {...props}
-                      posts={this.state.postsData}
-                      users={this.state.allUserData}
-                    />
+                      </div>
                     <NewPostIcon {...props} />
                   </div>
                 );
@@ -278,10 +279,19 @@ class App extends Component {
                 return (
                   <div>
                     <NavBar {...props} user={this.state.userData} />
-                    <CreatePost
+                    <div className="landing-page-create-post">
+                    <LandingPageBackdrop
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                    />
+                    </div>
+                      <div className="create-post">
+                        <CreatePost
                       userID={this.state.id}
                       userObj={this.state.userData}
-                    />
+                        />
+                      </div>
                   </div>
                 );
               }}

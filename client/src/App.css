@@ -193,6 +193,36 @@ nav {
   font-weight: lighter;
 }
 
+.new-post:hover {
+  transition: 0.4s;
+  background: rgba(37, 179, 155, 1);
+  cursor: pointer;
+}
+.poster-info {
+  position: relative;
+  right: 2px;
+  width: 150px;
+  float: right;
+  height: 33px;
+  margin-top: 11px;
+}
+.post-profile-picture {
+  height: 32px;
+  width: 32px;
+  border-radius: 15px;
+  position: relative;
+}
+.post-username {
+  margin: 0;
+  position: relative;
+  top: -26px;
+  left: 41px;
+  font-size: 14pt;
+  font-weight: lighter;
+  width: 136px;
+}
+
+
 /**************************************************/
 /****************** PROFILE PAGE ******************/
 /**************************************************/
@@ -394,6 +424,13 @@ nav {
   margin: 16px 0px 0px 10px;
 }
 
+.comments-parent{
+  position: absolute;
+  top: 700px;
+  width: 100vw;
+  z-index: 10;
+}
+
 .new-post {
   color: white;
   height: 60px;
@@ -540,40 +577,19 @@ nav {
   font-weight: normal;
   font-size: 20pt;
   transition: 0.4s;
-}
-.new-post:hover {
-  transition: 0.4s;
-  background: rgba(37, 179, 155, 1);
-  cursor: pointer;
-}
-.poster-info {
-  position: relative;
-  right: 2px;
-  width: 150px;
-  float: right;
-  height: 33px;
-  margin-top: 11px;
-}
-.post-profile-picture {
-  height: 32px;
-  width: 32px;
-  border-radius: 15px;
-  position: relative;
-}
-.post-username {
-  margin: 0;
-  position: relative;
-  top: -26px;
-  left: 41px;
-  font-size: 14pt;
-  font-weight: lighter;
-  width: 136px;
-}
-*/
+}*/
+
 
 .create-form-component {
   display: flex;
   justify-content: center;
+}
+
+.create-post{
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  z-index: 10;
 }
 
 .form-div {
@@ -619,13 +635,24 @@ nav {
   margin-right: auto;
   margin-bottom: 40px;
 }
-/*.new-post-div {
-width: 500px;
-margin-left: auto;
-margin-right: auto;
-height: 700px;
-box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
-}*/
+.create-post-div {
+  height: 780px;
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.3);
+  margin: 30px;
+  padding: 70px 20px 30px 20px;
+  background: white;
+}
+.create-post-h2{
+  margin: 0;
+  position: relative;
+  top: -38px;
+  font-weight: lighter;
+  font-size: 25pt;
+}
+.landing-page-create-post{
+  top: 1000px;
+  position: absolute;
+}
 /**************************************************/
 /**************** ADD COMMENT COMPONENT ***********/
 /**************************************************/

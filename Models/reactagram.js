@@ -85,16 +85,49 @@ Reactagram.allUserLikes = (req, res, next) => {
 };
 
 Reactagram.like = (req, res, next) => {
-  db
-    .one(
-      'INSERT INTO user_likes (userid, postid, is_liked) VALUES ($1, $2, $3) RETURNING *;',
-      [req.body.userid, req.body.postid, req.body.is_liked],
-    )
-    .then(likeData => {
-      res.locals.like = likeData;
-      next();
-    })
-    .catch(err => console.log(err));
+  console.log("called1")
+  db.oneOrNone(
+      'SELECT * FROM user_likes WHERE userid = $1 AND postid = $2', [req.body.userid, req.body.postid]
+      ).then( data => {
+        console.log(data);
+        if(data === null){
+          console.log("NEW DATA")
+        db
+          .one(
+            'INSERT INTO user_likes (userid, postid, is_liked) VALUES ($1, $2, $3) RETURNING *',
+            [req.body.userid, req.body.postid, req.body.is_liked],
+          )
+          .then(likeData => {
+              res.locals.like = likeData;
+              next();
+            })
+            .catch(err => console.log(err));
+          }
+      if (data.is_liked === true) {
+        console.log("change to FALSE")
+        db
+          .one(
+            'UPDATE user_likes SET is_liked = false WHERE id = $1 RETURNING *', [data.id]
+            )
+          .then(falseLikeUpdate => {
+            res.locals.falseLikeUpdate = falseLikeUpdate
+            next();
+          })
+          .catch(err => console.log(err));
+      }
+      else {
+        console.log("change to TRUE")
+        db
+          .one(
+            'UPDATE user_likes SET is_liked = true WHERE id = $1 RETURNING *', [data.id]
+            )
+          .then(trueLikeUpdate => {
+            res.locals.trueLikeUpdate = trueLikeUpdate
+            next();
+          })
+          .catch(err => console.log(err));
+      }})
+              .catch(err => console.log(err));
 };
 
 module.exports = Reactagram;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import likes from '../images/likes_small.png';
+import alreadyLiked from '../images/liked_small.png';
 
 export default class SinglePost extends Component {
   constructor(props) {
@@ -141,13 +143,13 @@ export default class SinglePost extends Component {
       };
 
       var liked = {
-        background: `url('https://i.imgur.com/HkYzJhT.png')`,
+        background: `url(${alreadyLiked})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       };
 
       var like = {
-        background: `url('https://i.imgur.com/lkJnRud.png')`,
+        background: `url(${likes})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       };

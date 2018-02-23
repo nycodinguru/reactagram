@@ -110,11 +110,12 @@ export default class CreatePost extends Component {
   render() {
     return (
       <section className="create-form-component">
+      <div className="create-post-div">
         <div className="form-div">
+          <h2 className="create-post-h2">New Post</h2>
             <div className="image-preview"></div>
           <form onSubmit={this.handleSubmit}>
             <label>
-              {/*<p>Image</p>*/}
               <input type="text" name="image_link" onChange={this.handleChange} placeholder="Image URL"/>
             </label>
 
@@ -125,6 +126,7 @@ export default class CreatePost extends Component {
 
             <button type="submit">add comment</button>
           </form>
+        </div>
         </div>
       </section>
     );
