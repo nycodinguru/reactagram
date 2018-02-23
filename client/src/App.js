@@ -30,20 +30,35 @@ class App extends Component {
       allUserData: 'notloaded',
       userData: null,
       postsData: '',
-      likeData: []
+      likeData: [],
+      showComments: []
     };
+
+    this.getAllComments = this.getAllComments.bind(this);
   }
 
-  grabLikes(){
+  getAllComments() {
+    console.log('gettin them comments');
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/API/reactagram/comments'
+    }).then(result => {
+      this.setState({
+        showComments: result.data,
+        loaded: true
+      });
+    });
+  }
 
-    const userid = this.state.userData.id
+  grabLikes() {
+    const userid = this.state.userData.id;
 
     axios({
       url: `http://localhost:3000/api/reactagram/alluserlikes/${userid}`,
       method: 'get'
     }).then(response => {
-      this.setState({ likeData: response.data})
-    })
+      this.setState({ likeData: response.data });
+    });
   }
 
   grabUserObj() {
@@ -80,6 +95,7 @@ class App extends Component {
     this.queryPosts();
     this.grabUserObj();
     this.allUsers();
+    this.getAllComments();
   }
 
   render() {
@@ -168,7 +184,12 @@ class App extends Component {
             <Route
               path="/reactagram/posts/:id"
               render={props => {
-                if(!this.state.userData) return <div className="loading-div" />;   
+                let totalComments = this.state.showComments.filter(
+                  comment => comment.p_id === parseInt(props.match.params.id)
+                ).length;
+                console.log('total comments gr ==>', totalComments);
+                if (!this.state.userData)
+                  return <div className="loading-div" />;
                 return (
                   <div>
                     <NavBar {...props} user={this.state.userData} />
@@ -179,6 +200,7 @@ class App extends Component {
                       postsData={this.state.postsData}
                       currentUserId={this.state.id}
                       userLikes={this.state.likeData}
+                      totalComments={totalComments}
                     />
 
                     <CommentContainer
@@ -186,6 +208,8 @@ class App extends Component {
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                       userID={this.state.id}
+                      showComments={this.state.showComments}
+                      getAllComments={this.getAllComments}
                     />
 
                     <LandingPageBackdrop
@@ -228,7 +252,11 @@ class App extends Component {
                       users={this.state.allUserData}
                       postsData={this.state.postsData}
                     />
-                    <ShowComments allUserData={this.state.allUserData} />
+                    <ShowComments
+                      allUserData={this.state.allUserData}
+                      showComments={this.state.showComments}
+                    />
+                    }
                     <LandingPageBackdrop
                       {...props}
                       posts={this.state.postsData}

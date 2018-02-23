@@ -11,28 +11,27 @@ class CommentContainer extends Component {
       showComments: '',
       loaded: false
     };
-
-    this.getAllComments = this.getAllComments.bind(this);
   }
 
-  componentDidMount() {
-    this.getAllComments();
-  }
+  // componentDidMount() {
+  //   this.getAllComments();
+  // }
 
-  getAllComments() {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/API/reactagram/comments'
-    }).then(result => {
-      this.setState({
-        showComments: result.data,
-        loaded: true
-      });
-    });
-  }
+  // getAllComments() {
+  //   axios({
+  //     method: 'get',
+  //     url: 'http://localhost:3000/API/reactagram/comments'
+  //   }).then(result => {
+  //     this.setState({
+  //       showComments: result.data,
+  //       loaded: true
+  //     });
+  //   });
+  // }
 
   render() {
-    //console.log('this is props in comment container=>', this.props);
+    console.log('this is props in comment container ===> gr', this.props);
+    console.log('length. show state===> gr', this.state.showComments.length);
     return (
       <div className="comment-container">
         <div className="addComment-div">
@@ -41,7 +40,7 @@ class CommentContainer extends Component {
             allUserData={this.props.users}
             userID={this.props.userID}
             postId={this.props.match.params.id}
-            getAllComments={this.getAllComments}
+            getAllComments={this.props.getAllComments}
           />
         </div>
 
@@ -49,7 +48,7 @@ class CommentContainer extends Component {
           <ShowComments
             allUserData={this.props.users}
             match={this.props.match}
-            showComments={this.state.showComments}
+            showComments={this.props.showComments}
           />
           } Sup!
         </div>
