@@ -11,16 +11,15 @@ export default class AddComment extends Component {
 
   componentDidMount() {
     this.setState({ isMounted: true });
-    console.log('PROPS ==>', this.props);
-
+    
     axios
-      .get('http://localhost:3000/api/reactagram/comments')
+      .get('/api/reactagram/comments')
       .then(response => {
         this.setState({ comments: response.data });
-        console.log('api data recieved ==>', this.state.comments);
+        //console.log('api data recieved ==>', this.state.comments);
       })
       .catch(err => {
-        console.log('err is:', err);
+        //console.log('err is:', err);
       });
   }
 
@@ -32,7 +31,7 @@ export default class AddComment extends Component {
     // console.log('submit handles');
     event.preventDefault();
     axios
-      .post('http://localhost:3000/api/reactagram/comments', {
+      .post('/api/reactagram/comments', {
         comment_text: this.state.comment,
         u_id: this.props.userID,
         p_id: this.props.postId
@@ -40,11 +39,11 @@ export default class AddComment extends Component {
       .then(response => {
         // this.setState({ comments: response.data });
         this.props.getAllComments();
-        console.log('WHAT IS RESPONSE.DATA?', response.data);
-        console.log('comment posted ==>', this.state.comment);
+        //console.log('WHAT IS RESPONSE.DATA?', response.data);
+        //console.log('comment posted ==>', this.state.comment);
       })
       .catch(err => {
-        console.log('err is:', err);
+        //console.log('err is:', err);
       });
   }
 

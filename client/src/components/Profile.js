@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import liked from '../images/liked.png';
+import unlike from '../images/likes.png';
 
 export default class Profile extends Component {
+
+	componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
 	render(){
-		if(!this.props.user || this.props.posts.length === 0 || this.props.allUser === 'notloaded'){
+		if(!this.props.user || this.props.posts.length === 0 || !this.props.allUser){
       		return <div className="loading-div"></div>
     	}
     	else {
@@ -44,7 +51,7 @@ export default class Profile extends Component {
 						<div style={styles} className="my-posts"></div>
 						<div>
 							<div className="button-div">
-								<div className="like-button" onClick={this.likeClicked}></div>
+								<img className="like-button" src={liked} onClick={this.likeClicked} />
 								<div className="like-count">{i.total_likes}</div>
 								<div className="comment-button"></div>
 							</div>

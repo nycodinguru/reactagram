@@ -6,8 +6,12 @@ class NewPostIcon extends Component {
     this.goToCreatePost = this.goToCreatePost.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   goToCreatePost() {
-    console.log('props are:', this.props);
+    //console.log('props are:', this.props);
     this.props.history.push(`/reactagram/newpost`);
   }
 

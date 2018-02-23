@@ -28,12 +28,12 @@ export default class SinglePost extends Component {
     });
 
     axios({
-      url: `http://localhost:3000/api/reactagram/users/${
+      url: `/api/reactagram/users/${
         posterProfile.user_id
       }`,
       method: 'get'
     }).then(response => {
-      console.log("poster's profile found", response.data);
+      //console.log("poster's profile found", response.data);
       this.setState({
         poster: response.data,
         loaded: true
@@ -69,7 +69,7 @@ export default class SinglePost extends Component {
     };
 
     axios({
-      url: `http://localhost:3000/api/reactagram/likes/`,
+      url: `/api/reactagram/likes/`,
       method: 'post',
       data: newLikeData
     }).then(response => {
@@ -89,7 +89,7 @@ export default class SinglePost extends Component {
     const id = this.props.match.params.id;
 
     axios({
-      url: `http://localhost:3000/api/reactagram/posts/${id}`,
+      url: `/api/reactagram/posts/${id}`,
       method: 'delete'
     }).then(response => {
       this.props.history.push('/reactagram');
@@ -186,7 +186,7 @@ export default class SinglePost extends Component {
                 >
                   <ul className="delete-button">
                     <li className="edit-button-icon" />
-                    <li className="delete-button-icon" />
+                    <li className="delete-button-icon" onClick={this.deleteHandler}/>
                   </ul>
                 </div>
               ) : (

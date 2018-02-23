@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import likedImage from '../images/liked.png';
+import unlike from '../images/likes.png';
 
 export default class LandingPage extends Component {
     constructor(props) {
@@ -10,17 +12,17 @@ export default class LandingPage extends Component {
 
     goToCreatePost() {
         // console.log('these are props:', props);
-        console.log('hi');
+        //console.log('hi');
         // this.props.history.push('/newpost');
     }
 
     likeClicked() {
-        console.log('like is clicked');
+        //console.log('like is clicked');
     }
 
     render() {
         // IF THE OBJECT IS EMPTY, DISPLAY LOADING IMAGE
-        if (this.props.users === 'notloaded' || this.props.posts.length === 0) {
+        if (this.props.users === null || this.props.posts.length === 0) {
             return <div className="loading-div" />;
         } else {
             // DISPLAYING ALL POSTS ON THE PAGE BY USING MAP
@@ -49,19 +51,17 @@ export default class LandingPage extends Component {
                     }
                 });
 
-                console.log(likedPost);
+                // console.log(likedPost)
 
-                var liked = {
-                    background: `url('./images/liked.png')`,
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat'
-                };
+                // var liked = {backgroundImage: "url('./images/liked.png')",
+                //             backgroundSize: 'contain',
+                //             backgroundRepeat: 'no-repeat',
+                //   };
 
-                var like = {
-                    background: `url('./images/likes.png')`,
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat'
-                };
+                // var  like = {background: "url('./images/likes.png')",
+                //             backgroundSize: 'contain',
+                //             backgroundRepeat: 'no-repeat'
+                //   };
 
                 return (
                     <div key={el.id} className="post-div">
@@ -81,28 +81,21 @@ export default class LandingPage extends Component {
 
                         <div>
                             <div className="button-div">
-                                <div
-                                    className="like-button"
-                                    style={
-                                        likedPost.length > 0
-                                            ? Number(el.id) ===
-                                              likedPost[0].postid
-                                              ? liked
-                                              : like
-                                            : like
-                                    }
+
+                                <img className="like-button" src={likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? likedImage : unlike : unlike} 
                                     onClick={this.likeClicked}
-                                />
+                                     />
+
                                 <div className="like-count">
                                     {el.total_likes}
                                 </div>
                                 <div className="comment-button" />
-                                {
+                                <p className="landing-likes-count">{
                                     this.props.totalComments.filter(
                                         comment =>
                                             comment.p_id === parseInt(el.id)
                                     ).length
-                                }
+                                }</p>
                             </div>
                             <p className="post-caption">{el.caption}</p>
                         </div>

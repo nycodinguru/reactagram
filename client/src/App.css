@@ -178,6 +178,10 @@ nav {
   cursor: pointer;
 }
 
+.button-div .like-button {
+  cursor: default;
+}
+
 .comment-button {
   background-image: url('./images/comment_bubble.png');
   margin-left: 26px;
@@ -220,6 +224,15 @@ nav {
   font-size: 14pt;
   font-weight: lighter;
   width: 136px;
+}
+
+.landing-likes-count{
+  margin: 0;
+  position: relative;
+  top: -29px;
+  font-weight: lighter;
+  left: 82px;
+  font-size: 12pt;
 }
 
 
@@ -448,7 +461,7 @@ nav {
 }
 .landing-page-backdrop {
   position: relative;
-  top: -1000px;
+  top: -700px;
   z-index: 2;
   filter: blur(6px);
   opacity: 0.4;
@@ -578,7 +591,34 @@ nav {
   font-size: 20pt;
   transition: 0.4s;
 }*/
-
+.new-post:hover {
+  transition: 0.4s;
+  background: rgba(37, 179, 155, 1);
+  cursor: pointer;
+}
+.poster-info {
+  position: relative;
+  right: 2px;
+  width: 150px;
+  float: right;
+  height: 33px;
+  margin-top: 11px;
+}
+.post-profile-picture {
+  height: 32px;
+  width: 32px;
+  border-radius: 15px;
+  position: relative;
+}
+.post-username {
+  margin: 0;
+  position: relative;
+  top: -26px;
+  left: 41px;
+  font-size: 14pt;
+  font-weight: lighter;
+  width: 136px;
+}
 
 .create-form-component {
   display: flex;
@@ -650,7 +690,7 @@ nav {
   font-size: 25pt;
 }
 .landing-page-create-post{
-  top: 1000px;
+  top: 700px;
   position: absolute;
 }
 /**************************************************/
@@ -718,3 +758,54 @@ nav {
   width: 430px;
   float: right;
 }
+
+
+/**************************************************/
+/********************* FOOTER *********************/
+/**************************************************/
+
+footer {
+  background-color: white;
+  width: 100vw;
+  height: 80px;
+}
+
+.contributors-nav ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  border-top: 1px solid rgba(0, 0, 0, .3);
+  margin-top: 50px;
+  word-spacing: 3px;
+}
+
+.contributors-nav li {
+  display: inline-block;
+  float: left;
+  padding: 10px;
+}
+
+.contributors-nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.contributors-nav a:hover {
+  text-decoration: underline;
+}
+
+#brand-copyright:hover{
+  text-decoration: none;
+  cursor: default;
+}
+
+
+
+
+
+

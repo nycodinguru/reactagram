@@ -20,6 +20,7 @@ import ShowComments from './components/ShowComments';
 import CreatePost from './components/CreatePost';
 import NewPostIcon from './components/NewPostIcon';
 import CommentContainer from './components/CommentContainer';
+import Footer from './components/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class App extends Component {
 
     this.state = {
       id: 1,
-      allUserData: 'notloaded',
+      allUserData: null,
       userData: null,
       postsData: '',
       likeData: [],
@@ -36,13 +37,14 @@ class App extends Component {
 
     this.getAllComments = this.getAllComments.bind(this);
     this.grabLikes = this.grabLikes.bind(this)
+    this.queryPosts2 = this.queryPosts2.bind(this)
   }
 
   getAllComments() {
-    console.log('gettin them comments');
+    //console.log('gettin them comments');
     axios({
       method: 'get',
-      url: 'http://localhost:3000/API/reactagram/comments'
+      url: '/API/reactagram/comments'
     }).then(result => {
       this.setState({
         showComments: result.data,
@@ -55,7 +57,7 @@ class App extends Component {
     const userid = this.state.userData.id;
 
     axios({
-      url: `http://localhost:3000/api/reactagram/alluserlikes/${userid}`,
+      url: `/api/reactagram/alluserlikes/${userid}`,
       method: 'get'
     }).then(response => {
       this.setState({ likeData: response.data });
@@ -64,7 +66,7 @@ class App extends Component {
 
   grabUserObj() {
     axios({
-      url: `http://localhost:3000/api/reactagram/users/${this.state.id}`,
+      url: `/api/reactagram/users/${this.state.id}`,
       method: 'get'
     }).then(response => {
       // console.log('grabUserObj: ', response.data);
@@ -74,7 +76,7 @@ class App extends Component {
 
   allUsers() {
     axios({
-      url: 'http://localhost:3000/api/reactagram/users',
+      url: '/api/reactagram/users',
       method: 'get'
     }).then(response => {
       // console.log('allUser: ', response.data);
@@ -84,11 +86,22 @@ class App extends Component {
 
   queryPosts() {
     axios({
-      url: 'http://localhost:3000/api/reactagram/posts',
+      url: '/api/reactagram/posts',
       method: 'get'
     }).then(response => {
       // console.log(response.data);
       this.setState({ postsData: response.data });
+    });
+  }
+
+  queryPosts2() {
+    axios({
+      url: '/api/reactagram/posts',
+      method: 'get'
+    }).then(response => {
+      // console.log(response.data);
+      this.setState({ postsData: response.data });
+      this.props.history.push('/reactagram');
     });
   }
 
@@ -145,18 +158,20 @@ class App extends Component {
               path="/reactagram"
               render={props => {
                 let totalComments = this.state.showComments;
-                console.log('total comments gr ==>', this.state.showComments);
+                //console.log('total comments gr ==>', this.state.showComments);
                 return (
                   <div id="landingPage">
                     <NavBar {...props} user={this.state.userData} />
                     <LandingPage
                       {...props}
+                      queryPosts2={this.queryPosts2}
                       userLikes={this.state.likeData}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                       totalComments={totalComments}
                     />
                     <NewPostIcon {...props} />
+                    <Footer />
                   </div>
                 );
               }}
@@ -178,6 +193,7 @@ class App extends Component {
                       posts={this.state.postsData}
                     />
                     <NewPostIcon {...props} />
+                    <Footer />
                   </div>
                 );
               }}
@@ -191,9 +207,9 @@ class App extends Component {
                 let totalComments = this.state.showComments.filter(
                   comment => comment.p_id === parseInt(props.match.params.id)
                 ).length;
-                console.log('total comments gr ==>', totalComments);
-                if (!this.state.userData)
-                  return <div className="loading-div" />;
+                //console.log('total comments gr ==>', totalComments);
+                console.log(this.state.userData)
+                if (!this.state.userData || !this.state.postsData || !this.state.allUserData) return <div className="loading-div"></div>
                 return (
                   <div>
                     <NavBar {...props} user={this.state.userData} />
@@ -224,6 +240,7 @@ class App extends Component {
                     />
                       </div>
                     <NewPostIcon {...props} />
+                    <Footer />
                   </div>
                 );
               }}

@@ -13,7 +13,7 @@ class NavBar extends Component {
   }
 
    goToProfile() {
-    console.log('props are:', this.props);
+    //console.log('props are:', this.props);
     this.props.history.push(`/reactagram/users/${this.props.user.id}`);
   }
 

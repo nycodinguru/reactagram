@@ -8,24 +8,24 @@ export default class LandingPage extends Component {
 	}
 
 	likeClicked(){
-		console.log('like is clicked')
+		//console.log('like is clicked')
 
 	}
 
 	goHome(){
-		console.log("clicked!")
+		//console.log("clicked!")
 		this.props.history.push('/reactagram');
 	}
 
 	render(){
 // IF THE OBJECT IS EMPTY, DISPLAY LOADING IMAGE
-		if(this.props.users === "notloaded"){
+		if(this.props.users === null){
 			return <div className="loading-div"></div>
 		} 
 		else {
 // DISPLAYING ALL POSTS ON THE PAGE BY USING MAP			
 			const posts = this.props.posts.map(el => {
-				var post_user = el.user_id
+                var post_user = el.user_id;
 
 // USED CSS TO PUT POSTS IMAGES ON DIV BACKGROUND INSTEAD OF USING IMG TAG
 				var styles = {background: `url('${el.image_link}')`,
@@ -33,6 +33,7 @@ export default class LandingPage extends Component {
 							backgroundPosition: 'center'}
 
 // IF USER_ID IN POSTS TABLE IS === TO ID IN USERS, DISPLAY PROFILE PICTURE AND USER NAME FROM USERS TABLE
+			console.log("called", this.props.users)
 			const posterID = this.props.users.find(user => {
 				return Number(user.id) === post_user
 			})

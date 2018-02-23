@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddComment from './AddComments';
 import ShowComments from './ShowComments';
-import axios from 'axios';
+// import axios from 'axios';
 
 class CommentContainer extends Component {
   constructor(props) {

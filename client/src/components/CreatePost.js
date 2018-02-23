@@ -28,29 +28,32 @@ export default class CreatePost extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.updatePreview = this.updatePreview.bind(this)
+    //this.updatePreview = this.updatePreview.bind(this)
   }
 
   componentDidMount() {
-    console.log('PROPS ==>', this.props);
 
-    console.log('user is in create post', this.props.userID);
-    console.log('user is in create post', this.props.userObj);
+    window.scrollTo(0, 0)
+  
+    //console.log('PROPS ==>', this.props);
+
+    //console.log('user is in create post', this.props.userID);
+    //console.log('user is in create post', this.props.userObj);
 
     // console.log('PROPS ==>', this.props);
 
     axios
 
-      .get('http://localhost:3000/api/reactagram/posts')
+      .get('/api/reactagram/posts')
 
       .then(response => {
         this.setState({ posts: response.data });
 
-        console.log('api data recieved ==>', this.state.posts);
+        //console.log('api data recieved ==>', this.state.posts);
       })
 
       .catch(err => {
-        console.log('err is:', err);
+        //console.log('err is:', err);
       });
   }
 
@@ -60,7 +63,7 @@ export default class CreatePost extends Component {
 
     event.preventDefault();
 
-    console.log('event.target.name', event.target.name);
+    //console.log('event.target.name', event.target.name);
 
     let key = event.target.name;
 
@@ -82,12 +85,14 @@ export default class CreatePost extends Component {
   handleSubmit(event) {
     // console.log('submit handles');
 
+    event.preventDefault();
+
     if (this.state.image_link === '') {
       alert('Image and caption are required.');
     } else {
       axios
 
-        .post('http://localhost:3000/api/reactagram/newpost', {
+        .post('/api/reactagram/newpost', {
           image_link: this.state.image_link,
 
           caption: this.state.caption,
@@ -97,12 +102,14 @@ export default class CreatePost extends Component {
 
         .then(response => {
           this.setState({ post: response.data });
+            this.props.queryPosts2();
+            
 
-          console.log('post posted ==>', this.state.post);
+          //console.log('post posted ==>', this.state.post);
         })
 
         .catch(err => {
-          console.log('err is:', err);
+          //console.log('err is:', err);
         });
     }
   }

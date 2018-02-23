@@ -21,7 +21,7 @@ export default class ShowComments extends Component {
     //     loaded: true
     //   });
     // });
-    console.log('=======>', this.props.showComments);
+    //console.log('=======>', this.props.showComments);
   }
 
   revealUsers() {
@@ -33,7 +33,7 @@ export default class ShowComments extends Component {
 
   render() {
     if (
-      this.props.allUserData === 'notloaded' ||
+      this.props.allUserData === null ||
       this.props.showComments.length === 0
     ) {
       return <div className="loading-div" />;
