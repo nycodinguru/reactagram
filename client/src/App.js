@@ -154,6 +154,7 @@ class App extends Component {
                     <Profile
                       {...props}
                       user={this.state.userData}
+                      allUser={this.state.allUserData}
                       posts={this.state.postsData}
                     />
                     <NewPostIcon {...props} />
@@ -186,6 +187,7 @@ class App extends Component {
                       users={this.state.allUserData}
                       userID={this.state.id}
                     />
+
                     <LandingPageBackdrop
                       {...props}
                       posts={this.state.postsData}
@@ -237,6 +239,8 @@ class App extends Component {
               }}
             />
 
+            {/************************* NEW POST PAGE ***********************/}
+            {/***************************************************************/}
             <Route
               exact
               path="/reactagram/newpost"

@@ -69,7 +69,7 @@ export default class ShowComments extends Component {
         });
 
       return (
-        <section>
+        <section id="show-comments-section">
           <div id="show-comments-div">{allComments}</div>
         </section>
       );

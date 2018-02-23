@@ -51,12 +51,12 @@ export default class AddComment extends Component {
   shouldRender() {
     if (this.state.isMounted) {
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="comment-form">
           <label>
-            Comment:
-            <input type="text" name="comment" onChange={this.handleChange} />
+            <p>Comment</p>
+            <input type="text" name="comment" onChange={this.handleChange} className="comment-input" />
           </label>
-          <button type="submit">add comment</button>
+          <button type="submit" className="add-comment-button">add comment</button>
         </form>
       );
     } else {
