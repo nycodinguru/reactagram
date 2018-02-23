@@ -382,6 +382,12 @@ nav {
   margin-left: 51px;
 }
 
+.comments-div p{
+  font-size: 15pt;
+  margin: 0 0 0 31px;
+  font-weight: lighter;
+}
+
 .caption-text {
   font-size: 20pt;
   width: 450px;
@@ -493,6 +499,7 @@ nav {
   cursor: default;
   top: 0px;
   line-height: 4em;
+  background: rgba(0, 0, 0, .4);
 }
 #down-arrow{
   font-size: 8pt;
@@ -562,6 +569,14 @@ nav {
 
 .create-form-component {
   margin-top: 200px;
+}
+
+.new-post-div {
+width: 500px;
+margin-left: auto;
+margin-right: auto;
+height: 700px;
+box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.2);
 }
 /**************************************************/
 /**************** ADD COMMENT COMPONENT ***********/

@@ -71,7 +71,7 @@ export default class SinglePost extends Component {
       method: 'post',
       data: newLikeData
     }).then(response => {
-      this.setState({ is_liked: true });
+      this.setState({ is_liked: true }, this.props.grabLikes)
     });
   }
 
@@ -141,7 +141,7 @@ export default class SinglePost extends Component {
       };
 
       var liked = {
-        background: `url('https://i.imgur.com/FmAhLu9.png')`,
+        background: `url('https://i.imgur.com/HkYzJhT.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       };

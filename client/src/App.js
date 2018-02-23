@@ -35,6 +35,7 @@ class App extends Component {
     };
 
     this.getAllComments = this.getAllComments.bind(this);
+    this.grabLikes = this.grabLikes.bind(this)
   }
 
   getAllComments() {
@@ -195,6 +196,7 @@ class App extends Component {
                     <NavBar {...props} user={this.state.userData} />
                     <SinglePost
                       {...props}
+                      grabLikes={this.grabLikes}
                       user={this.state.userData}
                       users={this.state.allUserData}
                       postsData={this.state.postsData}

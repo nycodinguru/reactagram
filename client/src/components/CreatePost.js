@@ -98,7 +98,7 @@ export default class CreatePost extends Component {
     return (
       <div className="create-form-component">
         <div />
-
+        <div className="new-post-div">
         <form onSubmit={this.handleSubmit}>
           <label>
             Image:
@@ -112,6 +112,7 @@ export default class CreatePost extends Component {
 
           <button type="submit">add comment</button>
         </form>
+        </div>
       </div>
     );
   }
