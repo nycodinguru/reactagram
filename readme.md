@@ -23,25 +23,25 @@ Through artistic/stylized photosharing they can indulge in glamor and present th
 ##### User is able to  browse posts on their feed. (estimated timeline by EOD Saturday)
 
 ###### This requires a working: 
-- express/node.js  route, model and controller x
-- a seeded db, consisting of at least a posts table x
-- a create-react-app  front end with react-router routes/links, and a landing page component that contains a navbar component and feed component x
+- express/node.js  route, model and controller 
+- a seeded db, consisting of at least a posts table 
+- a create-react-app  front end with react-router routes/links, and a landing page component that contains a navbar component and feed component 
 
 ##### User interact with an individual post, like  it, and comment on it, ( estimated completion EOD Monday)
 
 ###### This requires a working: 
 - Comment feature  for each post
-- Component x
-- GET request x
-- POST request x
+- Component 
+- GET request 
+- POST request 
 - Styling 
-- Routing x
+- Routing 
 
 ##### User can make a post  that is then added to the global feed ( individual user profile based feeds are a reach goal).. (estimated timeline by EOD Tuesday)
 
 ###### This requires a working: 
-- Route, model, and controller x
-- POST request x
+- Route, model, and controller 
+- POST request 
 - Triggering a rerender of the feed upon success
 - Floating icon  that triggers a form component
 - Styling
