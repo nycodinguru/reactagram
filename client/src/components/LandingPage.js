@@ -41,6 +41,27 @@ export default class LandingPage extends Component {
                 // console.log("who are you: ",posterID)
                 // console.log("what are you: ",post_user)
 
+                const likedPost = this.props.userLikes.filter(i => {
+    
+                    if (i.postid === Number(el.id)) {
+                    return true;
+                    }           else {
+                    return false;
+                    }
+                });
+
+                console.log(likedPost)
+
+                var liked =  {background: `url('./images/liked.png')`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat'
+                  };
+
+                var  like =  {background: `url('./images/likes.png')`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat'
+                  };
+
                 return (
                     <div key={el.id} className="post-div">
                         <div className="user-profile">
@@ -60,7 +81,7 @@ export default class LandingPage extends Component {
                         <div>
                             <div className="button-div">
                                 <div
-                                    className="like-button"
+                                    className="like-button" style={likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? liked : like : like} 
                                     onClick={this.likeClicked}
                                 />
                                 <div className="like-count">

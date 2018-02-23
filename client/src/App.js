@@ -132,6 +132,7 @@ class App extends Component {
                     <NavBar {...props} user={this.state.userData} />
                     <LandingPage
                       {...props}
+                      userLikes={this.state.likeData}
                       posts={this.state.postsData}
                       users={this.state.allUserData}
                     />

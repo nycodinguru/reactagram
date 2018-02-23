@@ -11,12 +11,13 @@ export default class SinglePost extends Component {
       user_id: '',
       postid: '',
       is_liked: false,
-      showButtons: false
+      showButtons: false,
     };
     this.grabPostersObj = this.grabPostersObj.bind(this);
     this.likeHandler = this.likeHandler.bind(this);
     this.toggleButtons = this.toggleButtons.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
+    this.postOrPut = this.postOrPut.bind(this);
   }
 
   grabPostersObj() {
@@ -39,7 +40,7 @@ export default class SinglePost extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   likeHandler() {
@@ -47,22 +48,22 @@ export default class SinglePost extends Component {
     const postid = this.props.match.params.id;
 
     this.setState({
-      user_id: [user_id],
-      postid: [postid],
+      user_id: user_id,
+      postid: postid,
       is_liked: true
-    }),
-      this.iLikeUpdate();
+    },this.iLikeUpdate)
   }
 
   iLikeUpdate() {
     const is_liked = this.state.is_liked;
-    const user_id = this.state.user_id;
+    const user_id = Number(this.state.user_id);
     const postid = this.state.postid;
 
+
     const newLikeData = {
-      is_liked: [is_liked],
-      userid: [user_id],
-      postid: [postid]
+      is_liked: is_liked,
+      userid: user_id,
+      postid: postid
     };
 
     axios({
@@ -93,6 +94,20 @@ export default class SinglePost extends Component {
     });
   }
 
+   postOrPut(){
+  //   const likedPost = this.props.userLikes.filter(i => {
+  //     console.log("yoooooo", i.postid, this.props.match.params.id)
+  //       if (i.postid === Number(this.props.match.params.id)) {
+  //         return true}
+  //       else { }
+        
+  //     });
+
+
+  //       if (likedPost === true ){this.setState({is_liked: true})}
+  //   })
+   }
+
   render() {
     if (this.props.userLikes.length === 0) {
       return <div className="loading-div" />;
@@ -111,11 +126,8 @@ export default class SinglePost extends Component {
         backgroundPosition: 'center'
       };
 
-      console.log('string', this.props.userLikes);
-
       const likedPost = this.props.userLikes.filter(i => {
-        console.log(i.postid, photo.id);
-        if (i.postid === Number(photo.id)) {
+        if (i.postid === Number(photo.id) && i.is_liked === true ){
           return true;
         } else {
           return false;
@@ -140,7 +152,7 @@ export default class SinglePost extends Component {
 
     return(
       <div className="single-post-parent-div">
-       <div className="single-post-container-div">
+       <div className="single-post-container-div" onLoad={this.postOrPut}>
         <div
 
               className="single-post-image-div"

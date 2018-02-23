@@ -76,7 +76,7 @@ Reactagram.destroy = (req, res, next) => {
 Reactagram.allUserLikes = (req, res, next) => {
   db
     .any(
-      'SELECT * FROM user_likes WHERE is_liked = true AND userid = $1;', [req.params.id])
+      'SELECT * FROM user_likes WHERE userid = $1;', [req.params.id])
     .then(allUserLikes => {
       res.locals.allUserLikes = allUserLikes;
       next();

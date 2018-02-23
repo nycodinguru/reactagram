@@ -171,11 +171,10 @@ nav {
 }
 
 .like-button {
-  background-image: url('./images/likes.png');
+  cursor: pointer;
 }
 
-.like-button:hover {
-  background-image: url('./images/liked.png');
+.liked-button {
   cursor: pointer;
 }
 
