@@ -76,9 +76,9 @@ Through artistic/stylized photosharing they can indulge in glamor and present th
 ### D. ERD & Wireframe 
 
 ![ERD](./client/src/images/erd.png)
-![Landing Page](.../images/LandingPage.png)
-![Create Post Page](.../images/createPost.png)
-![Comment Page](.../images/comment.png)
+![Landing Page](./client/src/images/LandingPage.png)
+![Create Post Page](./client/src/images/createPost.png)
+![Comment Page](./client/src/images/comment.png)
 
 
 ### E. Were there ay particular pain points or unsolved problems you had to manage? (e.g. technological, timing, content, etc.)
