@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import likedImage from '../images/liked.png';
-import unlike from '../images/likes.png';
+import alreadyLiked from '../images/liked.png';
+import likes from '../images/likes.png';
 
 export default class LandingPage extends Component {
     constructor(props) {
         super(props);
 
-        this.goToCreatePost = this.goToCreatePost.bind(this);
-    }
-
-    goToCreatePost() {
-        // console.log('these are props:', props);
-        //console.log('hi');
-        // this.props.history.push('/newpost');
-    }
-
-    likeClicked() {
-        //console.log('like is clicked');
     }
 
     render() {
@@ -33,35 +22,23 @@ export default class LandingPage extends Component {
                 var styles = {
                     background: `url('${el.image_link}')`,
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundPosition: 'center',
+                    backgroundColor: 'rgba(0, 0, 0, 0.6)'
                 };
 
                 // IF USER_ID IN POSTS TABLE IS === TO ID IN USERS, DISPLAY PROFILE PICTURE AND USER NAME FROM USERS TABLE
                 const posterID = this.props.users.find(user => {
                     return Number(user.id) === post_user;
                 });
-                // console.log("who are you: ",posterID)
-                // console.log("what are you: ",post_user)
 
                 const likedPost = this.props.userLikes.filter(i => {
-                    if (i.postid === Number(el.id)) {
+                    if (i.postid === Number(el.id) && i.is_liked === true) {
                         return true;
-                    } else {
+                    } 
+                    else {
                         return false;
                     }
                 });
-
-                // console.log(likedPost)
-
-                // var liked = {backgroundImage: "url('./images/liked.png')",
-                //             backgroundSize: 'contain',
-                //             backgroundRepeat: 'no-repeat',
-                //   };
-
-                // var  like = {background: "url('./images/likes.png')",
-                //             backgroundSize: 'contain',
-                //             backgroundRepeat: 'no-repeat'
-                //   };
 
                 return (
                     <div key={el.id} className="post-div">
@@ -74,17 +51,16 @@ export default class LandingPage extends Component {
                             <p className="user-name">{posterID.username}</p>
                         </div>
 
-                        <Link to={`/reactagram/posts/${el.id}`}>
+                        <Link to={`/reactagram/posts/${el.id}`} style={{ textDecoration: 'none' }}>
                             {/* WHEN USER CLICKS ON THE IMAGE, IT LEADS THE USER TO THE SINGLE POST PAGE*/}
-                            <div className="post-photos" style={styles} />
+                            <div className="post-photos" style={styles} > VIEW </div>
                         </Link>
 
                         <div>
                             <div className="button-div">
 
-                                <img className="like-button" src={likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? likedImage : unlike : unlike} 
-                                    onClick={this.likeClicked}
-                                     />
+                                <div className={`"like-button ${likedPost.length > 0 ? Number(el.id) === likedPost[0].postid ? "liked" : "not-liked" : "not-liked"}`} >
+                                </div>
 
                                 <div className="like-count">
                                     {el.total_likes}
@@ -104,7 +80,7 @@ export default class LandingPage extends Component {
             });
 
             return (
-                <section>
+                <section style={{overflowX: "hidden"}}>
                     <div id="all-posts">{posts}</div>
                 </section>
             );

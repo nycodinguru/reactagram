@@ -24,7 +24,7 @@ export default class Profile extends Component {
 
     		// console.log(currentUser)
 
-    		const photo = currentUser.profile_picture;
+    	const photo = currentUser.profile_picture;
 			const userName = currentUser.username;
 			const email = currentUser.email;
 
@@ -35,23 +35,38 @@ export default class Profile extends Component {
 					return el
 				}
 			})
+			 console.log("likes:", this.props.userLikes)
+			 console.log("posts:", posts)
+			
 
-			// console.log(posts)
+			//.filter(i => {
+   //                  if (i.postid === Number(posts.id) && i.is_liked === true) {
+   //                      return true;
+   //                  } 
+			// 							else {
+   //                      return false;
+   //                  }
+   //              });
 
-			const eachPosts = posts.map((i, key) => {
-				// console.log(i.image_link)
+
+			const eachPost = posts.map((i, key) => {
+
+			const likedPosts = this.props.userLikes.filter( i => {if (true) {return i}})
+
+			console.log(likedPosts[0].postid)
 
 				var styles = {background: `url('${i.image_link}')`,
 							backgroundSize: 'cover',
-							backgroundPosition: 'center'}
+							backgroundPosition: 'center',
+							backgroundColor: 'rgba(0, 0, 0, 0.6)'}
 
 // DISPLAYING ALL USER'S POSTS IN DIV URL
 				return (
 					<div className="profile-posts-div" key={key}>
-						<div style={styles} className="my-posts"></div>
+						<div style={styles} className="post-photos"> VIEW </div>
 						<div>
 							<div className="button-div">
-								<img className="like-button" src={liked} onClick={this.likeClicked} />
+								<div className={`"like-button ${Number(i.id) === likedPosts[0].postid && likedPosts[0].is_liked? "liked" : "not-liked"}`} > </div>
 								<div className="like-count">{i.total_likes}</div>
 								<div className="comment-button"></div>
 							</div>
@@ -79,7 +94,7 @@ export default class Profile extends Component {
 						</div>
 					</div>
 					<div id="profile-posts-section">
-							{eachPosts}
+							{eachPost}
 					</div>
 					<div className="new-post">+</div>
 				</section>

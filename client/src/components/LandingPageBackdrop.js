@@ -33,7 +33,6 @@ export default class LandingPage extends Component {
 							backgroundPosition: 'center'}
 
 // IF USER_ID IN POSTS TABLE IS === TO ID IN USERS, DISPLAY PROFILE PICTURE AND USER NAME FROM USERS TABLE
-			console.log("called", this.props.users)
 			const posterID = this.props.users.find(user => {
 				return Number(user.id) === post_user
 			})

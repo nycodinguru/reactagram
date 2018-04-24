@@ -31,8 +31,9 @@ class App extends Component {
       allUserData: null,
       userData: null,
       postsData: '',
-      likeData: [],
-      showComments: []
+      likeData: null,
+      showComments: [],
+      loaded: false
     };
 
     this.getAllComments = this.getAllComments.bind(this);
@@ -113,6 +114,7 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.loaded === false || this.state.likeData === null || this.state.userData === null) return <center><h2 id="loading"> LOADING... </h2></center>
     return (
       <div className="App">
         <Router>
@@ -191,6 +193,7 @@ class App extends Component {
                       user={this.state.userData}
                       allUser={this.state.allUserData}
                       posts={this.state.postsData}
+                      userLikes={this.state.likeData}
                     />
                     <NewPostIcon {...props} />
                     <Footer />
