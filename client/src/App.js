@@ -90,7 +90,6 @@ class App extends Component {
       url: '/api/reactagram/posts',
       method: 'get'
     }).then(response => {
-      // console.log(response.data);
       this.setState({ postsData: response.data });
     });
   }
@@ -100,9 +99,7 @@ class App extends Component {
       url: '/api/reactagram/posts',
       method: 'get'
     }).then(response => {
-      // console.log(response.data);
       this.setState({ postsData: response.data });
-      this.props.history.push('/reactagram');
     });
   }
 
@@ -218,6 +215,7 @@ class App extends Component {
                     <NavBar {...props} user={this.state.userData} />
                     <SinglePost
                       {...props}
+                      queryPosts2={this.queryPosts2}
                       grabLikes={this.grabLikes}
                       user={this.state.userData}
                       users={this.state.allUserData}
@@ -244,6 +242,53 @@ class App extends Component {
                       </div>
                     <NewPostIcon {...props} />
                     <Footer />
+                  </div>
+                );
+              }}
+            />
+
+          {/*********************** SINGLE POST PROFILE *********************/}
+            {/***************************************************************/}
+            <Route
+              path="/reactagram/users/posts/:id"
+              render={props => {
+                let totalComments = this.state.showComments.filter(
+                  comment => comment.p_id === parseInt(props.match.params.id)
+                ).length;
+                return (
+                  <div>
+                    <NavBar {...props} user={this.state.userData} />
+                    <SinglePost
+                      {...props}
+                      grabLikes={this.grabLikes}
+                      user={this.state.userData}
+                      users={this.state.allUserData}
+                      postsData={this.state.postsData}
+                      currentUserId={this.state.id}
+                      userLikes={this.state.likeData}
+                      totalComments={totalComments}
+                    />
+                    <div style={{ filter: 'blur(3px)', position: 'relative', top: '-710px', height: '100vh', zIndex: '-1000' }}>
+                    <Profile 
+                      {...props}
+                      user={this.state.userData}
+                      allUser={this.state.allUserData}
+                      posts={this.state.postsData}
+                      userLikes={this.state.likeData}
+                    />
+                    </div>
+                      <div className="comments-parent">
+                      <CommentContainer
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                      userID={this.state.id}
+                      showComments={this.state.showComments}
+                      getAllComments={this.getAllComments}
+                    />
+                      </div>
+                    <NewPostIcon {...props} />
+                    <Footer style={{ position: 'absolute', bottom: '0'}}/>
                   </div>
                 );
               }}

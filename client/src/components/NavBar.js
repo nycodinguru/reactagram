@@ -33,12 +33,7 @@ class NavBar extends Component {
         <div className="nav-shadow">
           <nav className="clearfix">
             <div onClick={this.handleClick} id="react-logo" />
-            <img
-              src="https://i.imgur.com/ibE1DjA.png"
-              id="reactagram-logo"
-              alt="https://i.imgur.com/ibE1DjA.png"
-            />
-            {/*<div id="reactagram-logo"></div>*/}
+            <div id="reactagram-logo"></div>
             <div onClick={this.goToProfile} id="profile-photo">
             </div>
           </nav>

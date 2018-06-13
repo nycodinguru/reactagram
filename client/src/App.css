@@ -28,6 +28,7 @@ section {
   height: 100vh;
   line-height: 122vh;
   font-size: 14pt;
+  font-weight: lighter;
 }
 
 .clearfix::after {
@@ -37,6 +38,7 @@ section {
 }
 
 #reactagram-logo {
+  background: url(./images/reactagram-logo-v2.png);
   background-size: cover;
   justify-content: center;
   height: 60px;

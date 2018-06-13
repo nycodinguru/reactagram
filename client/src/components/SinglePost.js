@@ -92,7 +92,7 @@ export default class SinglePost extends Component {
       url: `/api/reactagram/posts/${id}`,
       method: 'delete'
     }).then(response => {
-      this.props.history.push('/reactagram');
+      this.setState(this.props.queryPosts2(), this.props.history.push('/reactagram'));
     });
   }
 
