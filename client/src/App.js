@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
+import TokenService from './services/TokenService';
 
 import NavBar from './components/NavBar';
 import LandingPage from './components/LandingPage';
@@ -41,8 +42,51 @@ class App extends Component {
     this.queryPosts2 = this.queryPosts2.bind(this)
   }
 
+  register(data) {
+    axios('http://localhost:3000/users/', {
+      method: "POST",
+      data
+    }).then(resp => {
+      TokenService.save(resp.data.token)
+    })
+    .catch(err => console.log(`err: ${err}`));
+  }
+
+  login(data) {
+    axios('http://localhost:3000/users/login', {
+      method: "POST",
+      data
+    }).then(resp => {
+      TokenService.save(resp.data.token);
+    })
+    .catch(err => console.log(`err: ${err}`));
+  }
+
+  authClick(ev) {
+    ev.preventDefault();
+    axios('http://localhost:3000/restricted', {
+      headers: {
+        Authorization: `Bearer ${TokenService.read()}`,
+      },
+    }).then(resp => console.log(resp))
+    .catch(err => console.log(err));
+  }
+
+  logout(ev) {
+    ev.preventDefault();
+    TokenService.destroy();
+  }
+
+  checkLogin() {
+    axios('http://localhost:3000/isLoggedIn', {
+      headers: {
+        Authorization: `Bearer ${TokenService.read()}`,
+      },
+    }).then(resp => console.log(resp))
+    .catch(err => console.log(err));
+  }
+
   getAllComments() {
-    //console.log('gettin them comments');
     axios({
       method: 'get',
       url: '/API/reactagram/comments'
@@ -122,8 +166,35 @@ class App extends Component {
               render={() => <Redirect to="/reactagram" />}
             />
 
+            {/**************************** SIGNUP **************************/}
+            <Route
+              exact
+              path="/reactagram/signup"
+              render={props => {
+                return (
+                  <div>
+                    <NavBar {...props} user={this.state.userData} />
+                    <Signup {...props} />
+                    <LandingPageBackdrop
+                      {...props}
+                      posts={this.state.postsData}
+                      users={this.state.allUserData}
+                    />
+                  </div>
+                );
+              }}
+            />
+
+            <Route
+              exact
+              path="/signup"
+              render={props => {
+                return <Signup />;
+              }}
+            />
+
             {/********************** ON HOLD SECTION **********************/}
-            {/********************** LOGIN AND SIGNUP *********************/}
+            {/**************************** LOGIN  *************************/}
             <Route
               exact
               path="/reactagram/login"

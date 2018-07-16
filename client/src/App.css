@@ -1,11 +1,5 @@
-/**************************************************
-I personally like to have this kind of comment on 
-css for each page. So we can find the one easily since
-all of us will be doing it together. 
-**************************************************/
-
 /**************************************************/
-/****************** FOR ALL PAGE ******************/
+/****************** FOR ALL PAGES *****************/
 /**************************************************/
 * {
   font-family: 'Roboto Condensed', sans-serif;
@@ -65,7 +59,7 @@ section {
 }
 
 #profile-photo {
-  background-image: url('./images/yerim.png');
+  background-image: url('./images/default_user_icon.png');
   right: 50px;
 }
 
@@ -98,6 +92,22 @@ nav {
   height: 350px;
   width: 300px;
   margin: 24vh auto 0 auto;
+}
+
+/**************************************************/
+/************** SIGNUP COMMENTS PAGE **************/
+/**************************************************/
+
+.signup-div, .login-div{
+  width: 250px;
+  height: 250px;
+  margin: 100px auto;
+  background: white;
+  z-index: 100000;
+  box-shadow: 0px 0px 38px 6px rgba(0, 0, 0, .2);
+  padding: 50px;
+  border-radius: 6px;
+  text-align: center;
 }
 
 /**************************************************/
