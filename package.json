@@ -1,0 +1,24 @@
+{
+  "name": "reactagram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "cd client/ && npm run build && mv -f ./build ../public",
+    "setup": "mkdir public"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "mustache-express": "^1.2.5",
+    "nodemon": "^1.17.5",
+    "npm": "^5.8.0",
+    "pg-promise": "^7.5.3"
+  }
+}
